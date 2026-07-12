@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EJ Kang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #111;
+    background: #fff;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(237, 237, 237, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 0 14px 14px;
+    padding: 12px 12px 12px 22px;
+    margin-top: 0;
+  }
+  .nav-left {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .logo { font-weight: 700; font-size: 15px; letter-spacing: -0.2px; }
+  .logo sup { font-size: 10px; }
+  .nav-location {
+    font-size: 15px;
+    color: #666;
+    font-weight: 400;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .navlinks { display: flex; gap: 24px; }
+  .navlinks a {
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .navlinks a:hover { opacity: 0.6; }
+  .nav-cta {
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: #333; }
+  .nav-plus-mobile {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #111;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .nav-plus-mobile:hover { background: #333; }
+  .nav-plus {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #111;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .nav-plus:hover { background: #f7f7f7; }
+
+  /* HERO */
+  .hero {
+    padding: 100px 0 60px;
+  }
+  .hero-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 11vw, 110px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 0.95;
+  }
+  .hero-tagline {
+    max-width: 320px;
+    font-size: 14px;
+    color: #444;
+    flex-shrink: 0;
+  }
+
+  /* PROJECTS */
+  .section-label {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 80px 0 24px;
+  }
+  .project {
+    margin-bottom: 60px;
+  }
+  .project-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #111;
+    color: #fff;
+  }
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+    overflow: hidden;
+  }
+  .project-img img { width: 100%; height: 100%; object-fit: cover; }
+  .img-wrap { position: relative; }
+  .ribbon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #111;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 100px;
+  }
+  .project-tools {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .tool {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: #555;
+  }
+  .project-meta {
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
+  }
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .project-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .project-desc {
+    font-size: 15px;
+    color: #555;
+    margin-top: 6px;
+    max-width: 560px;
+  }
+
+  /* CONTACT */
+  .bottom-sheet {
+    background: #111;
+    color: #fff;
+    margin-top: 80px;
+  }
+  .contact {
+    padding: 100px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .contact h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .copyright-sub {
+    font-size: 16px;
+    color: #888;
+  }
+  .bottom-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+  .bottom-links a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .bottom-links a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .hero-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .hero-tagline { max-width: 100%; }
+    .navlinks { display: none; }
+    .nav-plus-mobile { display: flex; }
+    .nav-right { gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="nav-left">
+      <span class="logo">EJ KANG<sup>®</sup></span>
+    </div>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#fun">Fun</a>
+      </div>
+      <a href="#contact" class="nav-cta">Open to Work</a>
+      <a href="#contact" class="nav-plus-mobile">+</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-row">
+      <h1>EJ Kang</h1>
+      <p class="hero-tagline">
+        EJ is a UX/UI designer based in Toronto. Agency-trained in North America, she designs with users at the center and a considered visual touch.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-label">Selected Projects</h2>
+
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image 1</div>
+        <div class="ribbon">AI ✦</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Project one</div>
+        <div class="project-meta">2025 · Internship</div>
+      </div>
+      <div class="project-desc">One-line description of what this project was and the problem it solved.</div>
+      <div class="project-tools">
+        <span class="tool">Figma</span>
+        <span class="tool">Midjourney</span>
+        <span class="tool">After Effects</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-img">Project image 2</div>
+      <div class="title-row">
+        <div class="project-title">Project two</div>
+        <div class="project-meta">2024 · Freelance</div>
+      </div>
+      <div class="project-desc">One-line description of what this project was and the problem it solved.</div>
+      <div class="project-tools">
+        <span class="tool">Illustrator</span>
+        <span class="tool">Photoshop</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-img">Project image 3</div>
+      <div class="title-row">
+        <div class="project-title">Project three</div>
+        <div class="project-meta">2024 · Studio project</div>
+      </div>
+      <div class="project-desc">One-line description of what this project was and the problem it solved.</div>
+      <div class="project-tools">
+        <span class="tool">Figma</span>
+        <span class="tool">Blender</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="bottom-sheet">
+  <div class="wrap">
+    <section id="contact" class="contact">
+      <div class="bottom-left">
+        <h2>©2026 EJ Kang</h2>
+        <p class="copyright-sub">All Copyright reserved</p>
+      </div>
+      <div class="bottom-links">
+        <a href="mailto:ejkang038@gmail.com">ejkang038@gmail.com</a>
+        <a href="https://drive.google.com/file/d/1xBpQCEd3EPK2l6CTbwo-EiaDlxHtKHvp/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener">Linkedin</a>
+      </div>
+    </section>
+  </div>
+</div>
+
+</body>
+</html>
