@@ -156,6 +156,22 @@
   }
   .project-img img { width: 100%; height: 100%; object-fit: cover; }
   .img-wrap { position: relative; }
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .img-wrap:hover .img-overlay { opacity: 1; }
   .ribbon {
     position: absolute;
     top: 16px;
@@ -286,7 +302,7 @@
     <div class="project">
       <div class="img-wrap">
         <div class="project-img"><img src="hobbi-hero.png" alt="Hobbi — two phones showing a tennis meetup event and QR ticket"></div>
-        <div class="ribbon">AI ✦</div>
+        <div class="img-overlay">UI · BX</div>
       </div>
       <div class="title-row">
         <div class="project-title">Hobbi</div>
@@ -305,7 +321,7 @@
     <div class="project">
       <div class="img-wrap">
         <div class="project-img">Project image 2</div>
-        <div class="ribbon">AI ✦</div>
+        <div class="img-overlay">Web · UXUI · BX</div>
       </div>
       <div class="title-row">
         <div class="project-title">Casas Collective</div>
@@ -323,11 +339,11 @@
     <div class="project">
       <div class="img-wrap">
         <div class="project-img"><img src="pearls-hero.png" alt="Pearls — wordmark on a deep brown background"></div>
-        <div class="ribbon">AI ✦</div>
+        <div class="img-overlay">UX Strategy · UI</div>
       </div>
       <div class="title-row">
         <div class="project-title">Pearls</div>
-        <div class="project-meta">2025 · Case Study</div>
+        <div class="project-meta">2026 · Case Study</div>
       </div>
       <div class="project-desc">A PCOS wellness app that turns daily pill tracking into personalized care.</div>
       <div class="project-tools">
@@ -337,8 +353,27 @@
         <span class="tool">Claude</span>
       </div>
     </div>
+
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image 4</div>
+        <div class="img-overlay">Product · BX</div>
+        <div class="ribbon">AI ✦</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Carry</div>
+        <div class="project-meta">2026 · Group Project</div>
+      </div>
+      <div class="project-desc">One-line description of what Carry does.</div>
+      <div class="project-tools">
+        <span class="tool">Figma</span>
+        <span class="tool">Claude</span>
+        <span class="tool">MCP</span>
+      </div>
+    </div>
   </section>
 </div>
+
 <div class="bottom-sheet">
   <div class="wrap">
     <section id="contact" class="contact">
