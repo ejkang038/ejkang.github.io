@@ -122,12 +122,50 @@
 
   /* PROJECTS */
   .section-label {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     margin: 80px 0 24px;
   }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 80px 0 24px;
+  }
+  .section-header .section-label {
+    margin: 0;
+  }
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .filter-tabs .tool {
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #111;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 100px;
+    background: transparent;
+    color: #111;
+  }
+  .filter-tabs .tool.active {
+    background: rgba(0, 0, 0, 0.1);
+    color: #111;
+    border-color: #111;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 16px;
+  }
   .project {
     margin-bottom: 60px;
+  }
+  .projects-grid[data-category="graphic"] {
+    display: none;
   }
   .project-tags {
     display: flex;
@@ -223,6 +261,51 @@
     max-width: 560px;
   }
 
+  #awards {
+    padding-top: 20px;
+  }
+  .award-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .award-item {
+    font-size: 15px;
+    color: #333;
+  }
+
+  #bring {
+    padding-top: 60px;
+  }
+
+  /* WHAT I CAN BRING */
+  .bring-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .bring-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px 32px;
+    flex: 0 0 380px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .bring-item:hover {
+    border-color: #111;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .bring-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .bring-desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 640px;
+  }
+
   /* CONTACT */
   .bottom-sheet {
     background: #111;
@@ -267,6 +350,8 @@
     .navlinks { display: none; }
     .nav-plus-mobile { display: flex; }
     .nav-right { gap: 0; }
+    .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
 </head>
@@ -280,7 +365,7 @@
     <div class="nav-right">
       <div class="navlinks">
         <a href="#projects">Projects</a>
-        <a href="#fun">Fun</a>
+        <a href="#about">About</a>
       </div>
       <a href="#contact" class="nav-cta">Open to Work</a>
       <a href="#contact" class="nav-plus-mobile">+</a>
@@ -297,8 +382,15 @@
   </section>
 
   <section id="projects">
-    <h2 class="section-label">Selected Projects</h2>
+    <div class="section-header">
+      <h2 class="section-label">Selected Projects</h2>
+      <div class="filter-tabs">
+        <span class="tool active" data-tab="product">Product/UX/UI</span>
+        <span class="tool" data-tab="graphic">Graphic</span>
+      </div>
+    </div>
 
+    <div class="projects-grid" id="grid-product">
     <div class="project">
       <a href="hobbi.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;">
         <div class="project-img"><img src="hobbi-hero.png" alt="Hobbi — two phones showing a tennis meetup event and QR ticket"></div>
@@ -313,8 +405,6 @@
         <span class="tool">Figma</span>
         <span class="tool">Adobe Suite</span>
         <span class="tool">After Effects</span>
-        <span class="tool">Midjourney</span>
-        <span class="tool">ChatGPT</span>
       </div>
     </div>
 
@@ -370,6 +460,74 @@
         <span class="tool">MCP</span>
       </div>
     </div>
+    </div>
+
+    <div class="projects-grid" id="grid-graphic" style="display:none;">
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Illustration</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Poster</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Motion graphic</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="img-wrap">
+        <div class="project-img">Project image</div>
+      </div>
+      <div class="title-row">
+        <div class="project-title">Styling & Makeup</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2 class="section-label">Awards & Recognition</h2>
+    <div class="award-list">
+      <div class="award-item">2026 · Shinhan Bank Hackathon, Innovation Award</div>
+      <div class="award-item">2021 · illustration Exhibition, Supported by Jungnang District, Seoul</div>
+    </div>
+  </section>
+
+  <section id="bring">
+    <h2 class="section-label">What I can bring to the team</h2>
+
+    <div class="bring-scroll">
+    <div class="bring-item">
+      <div class="bring-title">A Product's Eye View, Not Just a User's</div>
+      <p class="bring-desc">A hackathon pushed me to think beyond solving the user's problem to ask how a service sustains itself for everyone involved.</p>
+    </div>
+
+    <div class="bring-item">
+      <div class="bring-title">A Craft First Love for Visuals</div>
+      <p class="bring-desc">I'm drawn to visual craft in illustration, beauty, and fashion for its own sake, not just as a means to an end. That instinct for graphic detail shows up in every screen I design.</p>
+    </div>
+
+    <div class="bring-item">
+      <div class="bring-title">Unafraid of Starting Over</div>
+      <p class="bring-desc">I applied for and completed an overseas internship, then moved to Canada to build a design career in North America. New environments don't scare me. They're always a challenge worth taking.</p>
+    </div>
+    </div>
   </section>
 </div>
 
@@ -389,5 +547,21 @@
   </div>
 </div>
 
+<script>
+  const filterTabs = document.querySelectorAll('.filter-tabs .tool');
+  const filterGrids = {
+    product: document.getElementById('grid-product'),
+    graphic: document.getElementById('grid-graphic')
+  };
+  filterTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      filterTabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      Object.keys(filterGrids).forEach(function(key) {
+        filterGrids[key].style.display = (key === tab.dataset.tab) ? 'grid' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
