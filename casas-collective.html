@@ -144,6 +144,34 @@
   .gallery-img img,
   .gallery-img video { width: 100%; height: auto; display: block; }
 
+  /* CORE DECISION */
+  .core-decision-section { padding: 40px 0 80px; }
+  .core-decision-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .core-decision-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px 32px;
+    flex: 0 0 300px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .core-decision-item:hover {
+    border-color: #111;
+    background: rgba(0, 0, 0, 0.03);
+  }
+  .core-decision-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .core-decision-desc {
+    font-size: 15px;
+    color: #555;
+  }
+
   /* NEXT PROJECT CTA */
   .all-projects-link {
     display: inline-flex;
@@ -242,7 +270,7 @@
     <div class="meta-grid">
       <div class="meta-block">
         <h3>About</h3>
-        <p>Casas Collective is a boutique hospitality brand rooted in Providence, Rhode Island. Transforming houses into warm, experience-driven homes.</p>
+        <p>Casas Collective is a boutique hospitality brand rooted in Providence, Rhode Island. Transforming houses into warm homes.</p>
       </div>
       <div class="meta-block">
         <h3>Credit</h3>
@@ -273,29 +301,29 @@
 
   <section class="intro-section">
     <h2 class="intro-label">User Flow</h2>
-    <div class="intro-body">
-      <h3>Goal Definition</h3>
-      <p>The Casas Collective website is designed to drive brand exposure and Airbnb traffic, not direct bookings through its own funnel. This definition is the basis for every UX decision.</p>
+  </section>
 
-      <h3>Core Principles</h3>
-      <ol>
-        <li><strong>Property is the only final internal destination</strong>: all primary CTAs on Home and About ultimately converge on Property.</li>
-        <li><strong>About is a side loop for trust building, not a place to lose visitors</strong>: CTAs at the bottom of About route back to Property.</li>
-        <li><strong>CTA hierarchy resolves cognitive load</strong>: differentiated into three tiers, Primary (pill button), Secondary (outline), and Tertiary (text link).</li>
-        <li><strong>CTA copy clearly signals its destination</strong>: instead of vague phrases like "Let's Find Out," destination predictable copy such as "Learn Our Story" or "Explore Our Homes" is used.</li>
-        <li><strong>Conversion points are distributed to sustain engagement</strong>: CTAs are placed at the top (immediate decision users), middle (About entry point), and bottom (post trust building conversion) of Home.</li>
-      </ol>
+  <div class="gallery-img" style="margin-bottom: 80px;"><img src="casas-userflow.png" alt="Casas Collective user flow diagram"></div>
 
-      <h3>Success Metrics</h3>
-      <ul>
-        <li>Home → Property conversion rate</li>
-        <li>Property recovery rate after visiting About</li>
-        <li>Property → Airbnb click through rate</li>
-      </ul>
+  <section class="core-decision-section">
+    <h2 class="intro-label" style="margin-bottom: 40px;">Core Decision</h2>
+    <div class="core-decision-scroll">
+      <div class="core-decision-item">
+        <div class="core-decision-title">1. CTA Structure & Flow</div>
+        <p class="core-decision-desc">Property is the only final internal destination, all primary CTAs converge there, with a three tier hierarchy (Primary, Secondary, Tertiary) to reduce hesitation and lift the Airbnb click through rate.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">2. Web Brand Design</div>
+        <p class="core-decision-desc">Balancing Airbnb's own interior design, logo, and brand blue with the site's identity was the main challenge. I chose a warm ivory cream palette and kept the design minimal, letting it support the interiors while the brand blue carries the trust of the brand itself.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">3. Next Steps</div>
+        <p class="core-decision-desc">Plan to track user behavior with Framer Analytics and add a discounted booking CTA requested by the client to further improve conversion.</p>
+      </div>
     </div>
   </section>
 
-  <section class="gallery">
+  <section class="gallery" style="padding-top: 80px;">
     <div class="gallery-img"><img src="casas-1.png" alt="Casas Collective detail image 1"></div>
     <div class="gallery-img"><img src="casas-2.png" alt="Casas Collective detail image 2"></div>
     <div class="gallery-img"><img src="casas-3.png" alt="Casas Collective detail image 3"></div>
