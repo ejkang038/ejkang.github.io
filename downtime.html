@@ -128,6 +128,40 @@
   .gallery-img img,
   .gallery-img video { width: 100%; height: auto; display: block; }
 
+  /* SINGLE FULL-WIDTH IMAGE SPACING */
+  .detail-single { margin-bottom: 40px; }
+
+  /* ADDED SECTION HEADING */
+  .section-heading {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    padding: 48px 0 24px;
+  }
+
+  /* HORIZONTAL SCROLL GROUP */
+  .hscroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hscroll::-webkit-scrollbar { height: 8px; }
+  .hscroll::-webkit-scrollbar-track { background: #f2f2f2; border-radius: 4px; }
+  .hscroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+  .hscroll-item {
+    flex: 0 0 auto;
+    width: min(88%, 800px);
+    scroll-snap-align: start;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #eee;
+  }
+  .hscroll-item img { width: 100%; height: auto; display: block; }
+
   /* NEXT PROJECT CTA */
   .all-projects-link {
     display: inline-flex;
@@ -254,22 +288,42 @@
     </div>
   </section>
 
-  <section class="gallery">
-    <div class="gallery-img"><img src="downtime-1.png" alt="Downtime detail image 1"></div>
-    <div class="gallery-img"><img src="downtime-2.png" alt="Downtime detail image 2"></div>
-    <div class="gallery-img"><img src="downtime-3.png" alt="Downtime detail image 3"></div>
-    <div class="gallery-img"><img src="downtime-4.png" alt="Downtime detail image 4"></div>
-    <div class="gallery-img"><img src="downtime-5.png" alt="Downtime detail image 5"></div>
-    <div class="gallery-img"><img src="downtime-6.png" alt="Downtime detail image 6"></div>
-    <div class="gallery-img"><img src="downtime-7.png" alt="Downtime detail image 7"></div>
-    <div class="gallery-img"><img src="downtime-8.png" alt="Downtime detail image 8"></div>
-    <div class="gallery-img"><img src="downtime-9.png" alt="Downtime detail image 9"></div>
-    <div class="gallery-img"><img src="downtime-10.png" alt="Downtime detail image 10"></div>
-    <div class="gallery-img"><img src="downtime-11.png" alt="Downtime detail image 11"></div>
-    <div class="gallery-img"><img src="downtime-12.png" alt="Downtime detail image 12"></div>
-    <div class="gallery-img"><img src="downtime-13.png" alt="Downtime detail image 13"></div>
-    <div class="gallery-img"><img src="downtime-14.png" alt="Downtime detail image 14"></div>
+  <section class="intro-section">
+    <div class="intro-body">
+      <p>[Project Goal copy placeholder — send me the wording you want here and I'll clean up the grammar and flow.]</p>
+    </div>
   </section>
+
+  <!-- Research: 1-4 horizontal scroll -->
+  <div class="hscroll">
+    <div class="hscroll-item"><img src="downtime-1.png" alt="Downtime — what people do while waiting at the repair shop"></div>
+    <div class="hscroll-item"><img src="downtime-2.png" alt="Downtime — emotional vs informational user needs"></div>
+    <div class="hscroll-item"><img src="downtime-3.png" alt="Downtime — how different personas experience the same downtime"></div>
+    <div class="hscroll-item"><img src="downtime-4.png" alt="Downtime — real users, real frustrations"></div>
+  </div>
+
+  <!-- Strategy / Userflow: singles -->
+  <div class="gallery-img detail-single"><img src="downtime-5.png" alt="Downtime — reimagining Apple Support"></div>
+  <div class="gallery-img detail-single"><img src="downtime-6.png" alt="Downtime — userflow for clear and enjoyable Apple support"></div>
+
+  <!-- User test detail -->
+  <h2 class="section-heading">User test detail</h2>
+  <div class="hscroll">
+    <div class="hscroll-item"><img src="downtime-7.png" alt="Downtime — validating onboarding and mood features through user testing"></div>
+    <div class="hscroll-item"><img src="downtime-8.png" alt="Downtime — guided structure user test detail"></div>
+  </div>
+
+  <!-- UI Design: single -->
+  <div class="gallery-img detail-single"><img src="downtime-9.png" alt="Downtime — UI design"></div>
+
+  <!-- Main Function -->
+  <h2 class="section-heading">Main Function</h2>
+  <div class="gallery-img detail-single"><img src="downtime-10.png" alt="Downtime — say goodbye to inaccurate and hopeless waiting"></div>
+  <div class="hscroll">
+    <div class="hscroll-item"><img src="downtime-11.png" alt="Downtime — refresh your emotion with mood cards"></div>
+    <div class="hscroll-item"><img src="downtime-12.png" alt="Downtime — check QR code for personalized contents"></div>
+    <div class="hscroll-item"><img src="downtime-13.png" alt="Downtime — project retrospect"></div>
+  </div>
 
   <a href="casas-collective.html" class="all-projects-link">
     <span class="arrow-back">←</span> Previous Project: Casas Collective
