@@ -353,6 +353,17 @@
     .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
+
+  /* Carry shake interaction */
+  @keyframes carry-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  #carry-shake.shaking { animation: carry-shake 0.4s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    #carry-shake.shaking { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -428,7 +439,7 @@
     <div class="project">
       <div class="img-wrap">
         <div class="project-img"><img src="pearls-hero.png" alt="Pearls — wordmark on a deep brown background"></div>
-        <div class="img-overlay">UX Strategy · UI</div>
+        <div class="img-overlay">Product · UXUI</div>
       </div>
       <div class="title-row">
         <div class="project-title">Pearls</div>
@@ -444,7 +455,7 @@
     </div>
 
     <div class="project">
-      <div class="img-wrap">
+      <div class="img-wrap" id="carry-shake" style="cursor:pointer;">
         <div class="project-img">Project image 4</div>
         <div class="img-overlay">Product · BX</div>
         <div class="ribbon">AI ✦</div>
@@ -453,11 +464,28 @@
         <div class="project-title">Carry</div>
         <div class="project-meta">2026 · Group Project</div>
       </div>
-      <div class="project-desc">One-line description of what Carry does.</div>
+      <div class="project-desc">A Google plugin that helps people connect different AI tools.</div>
       <div class="project-tools">
         <span class="tool">Figma</span>
         <span class="tool">Claude</span>
         <span class="tool">MCP</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <a href="downtime.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;">
+        <div class="project-img">Project image 5</div>
+        <div class="img-overlay">UX · UI</div>
+      </a>
+      <div class="title-row">
+        <div class="project-title">Downtime</div>
+        <div class="project-meta">2025 · Case Study</div>
+      </div>
+      <div class="project-desc">A concept Apple service that fills your downtime in the repair shop.</div>
+      <div class="project-tools">
+        <span class="tool">Figma</span>
+        <span class="tool">ChatGPT</span>
+        <span class="tool">Midjourney</span>
       </div>
     </div>
     </div>
@@ -562,6 +590,19 @@
       });
     });
   });
+
+  // Carry card shakes on click (no detail page yet)
+  var carryShake = document.getElementById('carry-shake');
+  if (carryShake) {
+    carryShake.addEventListener('click', function() {
+      carryShake.classList.remove('shaking');
+      void carryShake.offsetWidth; // restart animation
+      carryShake.classList.add('shaking');
+    });
+    carryShake.addEventListener('animationend', function() {
+      carryShake.classList.remove('shaking');
+    });
+  }
 </script>
 </body>
 </html>
