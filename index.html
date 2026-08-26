@@ -352,6 +352,7 @@
     .nav-right { gap: 0; }
     .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .filter-tabs .tool { font-size: 12px; padding: 8px 14px; }
   }
 
   /* Carry shake interaction */
@@ -397,7 +398,7 @@
       <h2 class="section-label">Selected Projects</h2>
       <div class="filter-tabs">
         <span class="tool active" data-tab="product">Product/UX/UI</span>
-        <span class="tool" data-tab="graphic">Graphic</span>
+        <span class="tool" data-tab="graphic" style="opacity:0.3;pointer-events:none;cursor:default;">Graphic</span>
       </div>
     </div>
 
@@ -437,10 +438,10 @@
     </div>
 
     <div class="project">
-      <div class="img-wrap">
+      <a href="pearls.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;">
         <div class="project-img"><img src="pearls-hero.png" alt="Pearls — wordmark on a deep brown background"></div>
         <div class="img-overlay">Product · UXUI</div>
-      </div>
+      </a>
       <div class="title-row">
         <div class="project-title">Pearls</div>
         <div class="project-meta">2026 · Case Study</div>
