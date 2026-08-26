@@ -357,13 +357,20 @@
 
   /* Carry shake interaction */
   @keyframes carry-shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
+    0%   { transform: translateX(0); }
+    15%  { transform: translateX(-6px); }
+    30%  { transform: translateX(6px); }
+    45%  { transform: translateX(-5px); }
+    60%  { transform: translateX(5px); }
+    75%  { transform: translateX(-3px); }
+    90%  { transform: translateX(3px); }
+    100% { transform: translateX(0); }
   }
-  #carry-shake.shaking { animation: carry-shake 0.4s ease; }
+  #carry-shake.shaking { animation: carry-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+  .filter-tabs .tool.tab-shake { animation: carry-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
   @media (prefers-reduced-motion: reduce) {
     #carry-shake.shaking { animation: none; }
+    .filter-tabs .tool.tab-shake { animation: none; }
   }
 </style>
 </head>
@@ -398,7 +405,7 @@
       <h2 class="section-label">Selected Projects</h2>
       <div class="filter-tabs">
         <span class="tool active" data-tab="product">Product/UX/UI</span>
-        <span class="tool" data-tab="graphic" style="opacity:0.3;pointer-events:none;cursor:default;">Graphic</span>
+        <span class="tool" data-tab="graphic" style="opacity:0.3;">Graphic</span>
       </div>
     </div>
 
@@ -584,6 +591,16 @@
   };
   filterTabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
+      if (tab.dataset.tab === 'graphic') {
+        // Graphic is disabled — just shake
+        tab.classList.remove('tab-shake');
+        void tab.offsetWidth;
+        tab.classList.add('tab-shake');
+        tab.addEventListener('animationend', function() {
+          tab.classList.remove('tab-shake');
+        }, { once: true });
+        return;
+      }
       filterTabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
       Object.keys(filterGrids).forEach(function(key) {
