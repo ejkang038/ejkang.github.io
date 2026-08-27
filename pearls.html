@@ -128,6 +128,34 @@
   .gallery-img img,
   .gallery-img video { width: 100%; height: auto; display: block; }
 
+  /* CORE DECISION */
+  .core-decision-section { padding: 40px 0 80px; }
+  .core-decision-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .core-decision-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px 32px;
+    flex: 0 0 300px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .core-decision-item:hover {
+    border-color: #111;
+    background: rgba(0, 0, 0, 0.03);
+  }
+  .core-decision-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .core-decision-desc {
+    font-size: 15px;
+    color: #555;
+  }
+
   /* NEXT PROJECT CTA */
   .all-projects-link {
     display: inline-flex;
@@ -274,8 +302,41 @@
     <div class="gallery-img"><img src="pearls-2.png" alt="Business model — 02"></div>
   </section>
 
+  <section class="intro-section">
+    <h2 class="intro-label">User Flow</h2>
+  </section>
+
   <section class="gallery">
-    <div class="gallery-img"><img src="pearls-3.png" alt="Pearls detail image 3"></div>
+    <div class="gallery-img"><img src="pearls-userflow.png" alt="Pearls user flow diagram"></div>
+  </section>
+
+  <section class="core-decision-section">
+    <h2 class="intro-label" style="margin-bottom: 40px;">Core Decision</h2>
+    <div class="core-decision-scroll">
+      <div class="core-decision-item">
+        <div class="core-decision-title">Positioning: From Fertility to Energy &amp; Focus</div>
+        <p class="core-decision-desc">Reframed around everyday energy and focus, not fertility, for young women managing wellness in busy lives.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">Business Model: Free Tracking as the Engine of Commerce</div>
+        <p class="core-decision-desc">Track to Trust to Buy: free tracking powers personalized commerce (no subscriptions, no ads), a harder path competitors avoid, still under validation.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">AI as a Dedicated Tab, Not a Floating Agent</div>
+        <p class="core-decision-desc">A session scoped tab with no saved history, trading conversational continuity for trust in a sensitive health context.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">Medical Validation: A Deliberate Next Step</div>
+        <p class="core-decision-desc">Clinical review and a drug to symptom database are intentionally left as the next step toward a real launch.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">Branding: Tech Sensibility on a Warm Base</div>
+        <p class="core-decision-desc">A warm base with 3D product shots and glassmorphism accents, expressing "medical but not clinical" through color and texture.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
     <div class="gallery-img"><img src="pearls-4.png" alt="Pearls detail image 4"></div>
     <div class="gallery-img"><img src="pearls-5.png" alt="Pearls detail image 5"></div>
     <div class="gallery-img"><img src="pearls-6.png" alt="Pearls detail image 6"></div>
