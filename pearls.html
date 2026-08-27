@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearls — EJ Kang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #111;
+    background: #fff;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+
+  /* NAV (동일) */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(237, 237, 237, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 0 14px 14px;
+    padding: 12px 12px 12px 22px;
+    margin-top: 0;
+  }
+  .nav-left { display: flex; align-items: baseline; gap: 12px; }
+  .logo { font-weight: 700; font-size: 15px; letter-spacing: -0.2px; }
+  .logo sup { font-size: 10px; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .navlinks { display: flex; gap: 24px; }
+  .navlinks a { color: #111; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .navlinks a:hover { opacity: 0.6; }
+  .nav-cta {
+    background: #111; color: #fff; font-size: 14px; font-weight: 600;
+    padding: 11px 20px; border-radius: 100px; text-decoration: none; white-space: nowrap;
+  }
+  .nav-cta:hover { background: #333; }
+  .nav-plus-mobile {
+    display: none; width: 40px; height: 40px; border-radius: 50%;
+    background: #111; align-items: center; justify-content: center;
+    text-decoration: none; color: #fff; font-size: 20px; flex-shrink: 0;
+  }
+  .nav-plus-mobile:hover { background: #333; }
+
+  /* PROJECT HEADER */
+  .project-hero { padding: 60px 0 40px; }
+  .eyebrow { font-size: 18px; color: #666; margin-bottom: 12px; }
+  .project-hero h1 {
+    font-size: clamp(56px, 11vw, 110px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 0.95;
+    margin-bottom: 48px;
+  }
+
+  /* META GRID (About / Credit / Disciplines) */
+  .meta-grid {
+    display: flex;
+    gap: 56px;
+    padding-bottom: 60px;
+    flex-wrap: wrap;
+  }
+  .meta-block { width: auto; max-width: 260px; }
+  .meta-block h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  .meta-block p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .meta-block p:last-child { margin-bottom: 0; }
+
+  /* HERO IMAGE (full-bleed, 원본 비율 유지) */
+  .detail-hero-img {
+    width: 100%;
+    background: #eee;
+  }
+  .detail-hero-img img { width: 100%; height: auto; display: block; }
+
+  /* INTRO */
+  .intro-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 80px 0;
+  }
+  .intro-label {
+    font-size: 40px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .intro-body {
+    max-width: 560px;
+  }
+  .intro-body p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  .intro-body p:last-child { margin-bottom: 0; }
+
+  /* GALLERY */
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 80px;
+  }
+  .gallery-img {
+    width: 100%;
+    border-radius: 10px;
+    background: #eee;
+    overflow: hidden;
+  }
+  .gallery-img img,
+  .gallery-img video { width: 100%; height: auto; display: block; }
+
+  /* NEXT PROJECT CTA */
+  .all-projects-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    padding: 40px 0 0;
+    transition: color 0.2s ease;
+  }
+  .all-projects-link:hover { color: #111; }
+  .all-projects-link .arrow-back {
+    transition: transform 0.2s ease;
+  }
+  .all-projects-link:hover .arrow-back { transform: translateX(-4px); }
+
+  .next-project {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    padding: 32px 0 80px;
+  }
+  .next-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  .next-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .next-title {
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+  }
+  .next-arrow {
+    font-size: 32px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .next-desc {
+    font-size: 16px;
+    color: #555;
+    margin-top: 12px;
+    max-width: 560px;
+  }
+  .next-project:hover .next-title { opacity: 0.6; }
+  .next-project:hover .next-arrow { transform: translateX(8px); }
+
+  /* CONTACT (동일) */
+  .bottom-sheet { background: #111; color: #fff; margin-top: 80px; }
+  .contact { padding: 100px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+  .contact h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
+  .copyright-sub { font-size: 16px; color: #888; }
+  .bottom-links { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .bottom-links a { color: #fff; font-weight: 500; text-decoration: none; font-size: 16px; }
+  .bottom-links a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .navlinks { display: none; }
+    .nav-plus-mobile { display: flex; }
+    .nav-right { gap: 0; }
+    .meta-grid { flex-direction: column; gap: 28px; }
+    .meta-block { max-width: 100%; }
+    .intro-section { flex-direction: column; gap: 20px; }
+
+    /* Copyright / footer */
+    .contact { flex-direction: column; gap: 24px; padding: 60px 0; }
+    .contact h2 { font-size: 24px; }
+    .copyright-sub { font-size: 13px; }
+    .bottom-links a { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;color:inherit;"><span class="logo">EJ KANG<sup>®</sup></span></a>
+    </div>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+      </div>
+      <a href="index.html#contact" class="nav-cta">Open to Work</a>
+      <a href="index.html#contact" class="nav-plus-mobile">+</a>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="eyebrow">2026 Project</div>
+    <h1>Pearls</h1>
+
+    <div class="meta-grid">
+      <div class="meta-block">
+        <h3>About</h3>
+        <p>A PCOS wellness app that turns daily pill tracking into personalized care.</p>
+      </div>
+      <div class="meta-block">
+        <h3>Credit</h3>
+        <p>Solo Project</p>
+        <p>Case Study</p>
+      </div>
+      <div class="meta-block">
+        <h3>Disciplines</h3>
+        <p>Strategy · UX Research</p>
+        <p>UI Design · Brand</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="detail-hero-img">
+  <img src="pearls-detail-hero.png" alt="Pearls app screen — Pearls Talk consistency score and symptom tracking over a photo of a woman smiling">
+</div>
+
+<div class="wrap">
+  <section class="intro-section">
+    <h2 class="intro-label">Intro</h2>
+    <div class="intro-body">
+      <p>Your doctor gave you a pill, No one gave you a guide.</p>
+      <p>Pearls is a PCOS wellness app that connects daily pill tracking, cycle insights, and supplement recommendations built for women who deserve more than a prescription.</p>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <h2 class="intro-label">Strategy</h2>
+    <div class="intro-body">
+      <p>No app was built for women managing PCOS through the pill.</p>
+      <p>Trackers were generic, supplement brands ignored the pill. The two were never connected. The gap in the map became our user: Diagnosed, Prescribed, Left to figure out the rest alone.</p>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-img"><img src="pearls-1.png" alt="Positioning map — 01"></div>
+    <div class="gallery-img"><img src="pearls-2.png" alt="Business model — 02"></div>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-img"><img src="pearls-3.png" alt="Pearls detail image 3"></div>
+    <div class="gallery-img"><img src="pearls-4.png" alt="Pearls detail image 4"></div>
+    <div class="gallery-img"><img src="pearls-5.png" alt="Pearls detail image 5"></div>
+    <div class="gallery-img"><img src="pearls-6.png" alt="Pearls detail image 6"></div>
+  </section>
+
+  <a href="casas-collective.html" class="all-projects-link">
+    <span class="arrow-back">←</span> Previous Project: Casas Collective
+  </a>
+
+  <a href="downtime.html" class="next-project">
+    <div class="next-label">Next Project</div>
+    <div class="next-title-row">
+      <div class="next-title">Downtime</div>
+      <div class="next-arrow">→</div>
+    </div>
+    <div class="next-desc">One-line description of what Downtime does.</div>
+  </a>
+</div>
+
+<div class="bottom-sheet">
+  <div class="wrap">
+    <section id="contact" class="contact">
+      <div class="bottom-left">
+        <h2>©2026 EJ Kang</h2>
+        <p class="copyright-sub">All Copyright reserved</p>
+      </div>
+      <div class="bottom-links">
+        <a href="mailto:ejkang038@gmail.com">ejkang038@gmail.com</a>
+        <a href="https://drive.google.com/file/d/1xBpQCEd3EPK2l6CTbwo-EiaDlxHtKHvp/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener">Linkedin</a>
+      </div>
+    </section>
+  </div>
+</div>
+
+</body>
+</html>
