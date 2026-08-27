@@ -128,6 +128,34 @@
   .gallery-img img,
   .gallery-img video { width: 100%; height: auto; display: block; }
 
+  /* CORE DECISION */
+  .core-decision-section { padding: 40px 0 80px; }
+  .core-decision-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .core-decision-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px 32px;
+    flex: 0 0 300px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .core-decision-item:hover {
+    border-color: #111;
+    background: rgba(0, 0, 0, 0.03);
+  }
+  .core-decision-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .core-decision-desc {
+    font-size: 15px;
+    color: #555;
+  }
+
   /* NEXT PROJECT CTA */
   .all-projects-link {
     display: inline-flex;
@@ -232,7 +260,7 @@
     <div class="meta-grid">
       <div class="meta-block">
         <h3>About</h3>
-        <p>Casas Collective is a boutique hospitality brand rooted in Providence, Rhode Island. Transforming houses into warm, experience-driven homes.</p>
+        <p>Casas Collective is a boutique hospitality brand rooted in Providence, Rhode Island. Transforming houses into warm homes.</p>
       </div>
       <div class="meta-block">
         <h3>Credit</h3>
@@ -261,11 +289,36 @@
     </div>
   </section>
 
-  <section class="gallery">
+  <section class="intro-section">
+    <h2 class="intro-label">User Flow</h2>
+  </section>
+
+  <div class="gallery-img" style="margin-bottom: 80px;"><img src="casas-userflow.png" alt="Casas Collective user flow diagram"></div>
+
+  <section class="core-decision-section">
+    <h2 class="intro-label" style="margin-bottom: 40px;">Core Decision</h2>
+    <div class="core-decision-scroll">
+      <div class="core-decision-item">
+        <div class="core-decision-title">1. CTA Structure &amp; Flow</div>
+        <p class="core-decision-desc">Property is the only final internal destination, all primary CTAs converge there, with a three tier hierarchy (Primary, Secondary, Tertiary) to reduce hesitation and lift the Airbnb click through rate.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">2. Web Brand Design</div>
+        <p class="core-decision-desc">Balancing Airbnb's own interior design, logo, and brand blue with the site's identity was the main challenge. I chose a warm ivory cream palette and kept the design minimal, letting it support the interiors while the brand blue carries the trust of the brand itself.</p>
+      </div>
+      <div class="core-decision-item">
+        <div class="core-decision-title">3. Next Steps</div>
+        <p class="core-decision-desc">Plan to track user behavior with Framer Analytics and add a discounted booking CTA requested by the client to further improve conversion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" style="padding-top: 80px;">
     <div class="gallery-img"><img src="casas-1.png" alt="Casas Collective detail image 1"></div>
     <div class="gallery-img"><img src="casas-2.png" alt="Casas Collective detail image 2"></div>
     <div class="gallery-img"><img src="casas-3.png" alt="Casas Collective detail image 3"></div>
     <div class="gallery-img"><img src="casas-4.png" alt="Casas Collective detail image 4"></div>
+    <div class="gallery-img"><img src="casas-5.png" alt="Casas Collective detail image 5"></div>
   </section>
 
   <a href="hobbi.html" class="all-projects-link">
