@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WKLVXXZTN4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WKLVXXZTN4');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Downtime — EJ Kang</title>
@@ -227,6 +235,7 @@
   .bottom-links a:hover { text-decoration: underline; }
 
   @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
     .navlinks { display: none; }
     .nav-plus-mobile { display: flex; }
     .nav-right { gap: 0; }
@@ -354,9 +363,9 @@
         <p class="copyright-sub">All Copyright reserved</p>
       </div>
       <div class="bottom-links">
-        <a href="mailto:ejkang038@gmail.com">ejkang038@gmail.com</a>
-        <a href="https://docs.google.com/document/d/1tygZGHCwR9sJoc2kIixEkGQdjlFJI0BtpjXjynefcQQ/edit?usp=sharing" target="_blank" rel="noopener">Resume</a>
-        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener">Linkedin</a>
+        <a href="mailto:ejkang038@gmail.com" onclick="gtag('event', 'external_link_click', {link_type: 'email'});">ejkang038@gmail.com</a>
+        <a href="https://docs.google.com/document/d/1tygZGHCwR9sJoc2kIixEkGQdjlFJI0BtpjXjynefcQQ/edit?usp=sharing" target="_blank" rel="noopener" onclick="gtag('event', 'resume_download');">Resume</a>
+        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener" onclick="gtag('event', 'external_link_click', {link_type: 'linkedin'});">Linkedin</a>
       </div>
     </section>
   </div>
