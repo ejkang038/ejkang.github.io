@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hobbi — EJ Kang</title>
+<title>About — EJ Kang</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -59,59 +59,30 @@
   }
   .nav-plus-mobile:hover { background: #333; }
 
-  /* PROJECT HEADER */
+  /* PAGE HERO */
   .project-hero { padding: 60px 0 40px; }
   .eyebrow { font-size: 18px; color: #666; margin-bottom: 12px; }
   .project-hero h1 {
-    font-size: clamp(56px, 11vw, 110px);
+    font-size: clamp(40px, 6.5vw, 64px);
     font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 0.95;
-    margin-bottom: 48px;
+    letter-spacing: -2px;
+    line-height: 1.15;
+    max-width: 760px;
   }
 
-  /* META GRID (About / Credit / Disciplines) */
-  .meta-grid {
-    display: flex;
-    gap: 56px;
-    padding-bottom: 60px;
-    flex-wrap: wrap;
-  }
-  .meta-block { width: auto; max-width: 260px; }
-  .meta-block h3 {
-    font-size: 18px;
-    font-weight: 500;
-    color: #111;
-    margin-bottom: 10px;
-  }
-  .meta-block p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 4px;
-  }
-  .meta-block p:last-child { margin-bottom: 0; }
-
-  /* HERO IMAGE (full-bleed, 원본 비율 유지) */
-  .detail-hero-img {
-    width: 100%;
-    background: #eee;
-  }
-  .detail-hero-img img { width: 100%; height: auto; display: block; }
-
-  /* INTRO */
+  /* PHILOSOPHY (stacked: title above body) */
   .intro-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
     padding: 80px 0;
+    border-top: 1px solid #eee;
   }
   .intro-label {
     font-size: 40px;
     font-weight: 700;
-    flex-shrink: 0;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
   }
   .intro-body {
-    max-width: 560px;
+    max-width: 640px;
   }
   .intro-body p {
     font-size: 16px;
@@ -120,79 +91,38 @@
   }
   .intro-body p:last-child { margin-bottom: 0; }
 
-  /* GALLERY */
-  .gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding-bottom: 80px;
+  /* TOOLSET */
+  .toolset-section { padding: 0 0 80px; border-top: 1px solid #eee; padding-top: 80px; }
+  .toolset-section .intro-label { margin-bottom: 32px; }
+  .toolset-grid { display: flex; flex-direction: column; gap: 24px; max-width: 560px; }
+  .toolset-row { display: flex; gap: 24px; align-items: baseline; }
+  .toolset-cat { font-size: 14px; font-weight: 600; color: #111; width: 120px; flex-shrink: 0; }
+  .toolset-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .toolset-tags .tool {
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; border: 1px solid #ddd; color: #555;
   }
-  .gallery-img {
-    width: 100%;
-    border-radius: 10px;
-    background: #eee;
-    overflow: hidden;
-  }
-  .gallery-img img,
-  .gallery-img video { width: 100%; height: auto; display: block; }
 
-  /* NEXT PROJECT CTA */
-  .all-projects-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: #666;
-    font-size: 14px;
-    padding: 40px 0 0;
-    transition: color 0.2s ease;
+  /* CLOSING STATEMENT */
+  .closing-section {
+    border-top: 1px solid #eee;
+    padding: 80px 0;
   }
-  .all-projects-link:hover { color: #111; }
-  .all-projects-link .arrow-back {
-    transition: transform 0.2s ease;
-  }
-  .all-projects-link:hover .arrow-back { transform: translateX(-4px); }
-
-  .next-project {
-    display: block;
-    text-decoration: none;
-    color: #111;
-    padding: 32px 0 80px;
-  }
-  .next-label {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-  }
-  .next-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .next-title {
-    font-size: clamp(40px, 7vw, 72px);
-    font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1;
-    transition: opacity 0.2s ease;
-  }
-  .next-arrow {
+  .closing-section h2 {
     font-size: 32px;
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    max-width: 640px;
   }
-  .next-desc {
+  .closing-section p {
     font-size: 16px;
     color: #555;
-    margin-top: 12px;
     max-width: 560px;
   }
-  .next-project:hover .next-title { opacity: 0.6; }
-  .next-project:hover .next-arrow { transform: translateX(8px); }
 
   /* CONTACT (동일) */
-  .bottom-sheet { background: #111; color: #fff; margin-top: 80px; }
+  .bottom-sheet { background: #111; color: #fff; margin-top: 40px; }
   .contact { padding: 100px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
   .contact h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
   .copyright-sub { font-size: 16px; color: #888; }
@@ -205,10 +135,15 @@
     .navlinks { display: none; }
     .nav-plus-mobile { display: flex; }
     .nav-right { gap: 0; }
-    .meta-grid { flex-direction: column; gap: 28px; }
-    .meta-block { max-width: 100%; }
-    .intro-section { flex-direction: column; gap: 20px; }
-    .intro-label { font-size: 26px; }
+    .project-hero h1 { font-size: 32px; letter-spacing: -1px; }
+    .intro-section { padding: 60px 0; }
+    .intro-label { font-size: 24px; }
+    .toolset-section { padding-top: 60px; padding-bottom: 60px; }
+    .toolset-grid { margin-left: 0; }
+    .toolset-row { flex-direction: column; gap: 8px; }
+    .toolset-cat { width: auto; }
+    .closing-section { padding: 60px 0; }
+    .closing-section h2 { font-size: 24px; }
 
     /* Copyright / footer */
     .contact { flex-direction: column; gap: 24px; padding: 60px 0; }
@@ -263,64 +198,59 @@
   </nav>
 
   <section class="project-hero">
-    <div class="eyebrow">2025 Project</div>
-    <h1 class="entry" style="--d:0.05s;">Hobbi</h1>
-
-    <div class="meta-grid">
-      <div class="meta-block">
-        <h3>About</h3>
-        <p>A hobby-based social platform designed to make real-world connections feel natural again.</p>
-      </div>
-      <div class="meta-block">
-        <h3>Credit</h3>
-        <p>Agency / Nova</p>
-        <p>Direction / Chandlyr Jackson</p>
-      </div>
-      <div class="meta-block">
-        <h3>Disciplines</h3>
-        <p>Brand Design</p>
-        <p>UI Design</p>
-      </div>
-    </div>
+    <div class="eyebrow">About</div>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a strategist, balancing the functional discipline of UX with an eye for visual craft. I believe neither one works without the other.</h1>
   </section>
-</div>
 
-<div class="detail-hero-img">
-  <img src="hobbi-detail-hero.png" alt="Hobbi — phone showing a tennis meetup event">
-</div>
-
-<div class="wrap">
   <section class="intro-section reveal">
-    <h2 class="intro-label">Intro</h2>
+    <h2 class="intro-label">Design With a Reason</h2>
     <div class="intro-body">
-      <p>Hobbi's bright and sporty visual identity translates the energy of shared activities into an approachable and socially intuitive experience.</p>
-      <p>In modern cities, meeting new people often feels transactional and superficial. Hobbi was designed to solve this problem by helping users build authentic relationships through shared hobbies like tennis and pickleball. The experience focuses on lowering social pressure and making offline connections feel more natural and approachable.</p>
+      <p>What separates a designer from an illustrator, I believe, is intent. Visual instinct has to answer to something bigger: data, market context, and a clear point of view on what the product needs to communicate.</p>
+      <p>I try to work like a strategist first and a maker second, asking what a decision needs to accomplish before I decide how it should look.</p>
     </div>
   </section>
 
-  <section class="gallery reveal">
-    <div class="gallery-img">
-      <video src="hobbi-1.mp4" autoplay muted loop playsinline></video>
+  <section class="toolset-section reveal">
+    <h2 class="intro-label">Toolset</h2>
+    <div class="toolset-grid">
+      <div class="toolset-row">
+        <div class="toolset-cat">Design</div>
+        <div class="toolset-tags">
+          <span class="tool">Adobe Suite</span>
+          <span class="tool">Figma</span>
+          <span class="tool">Framer</span>
+        </div>
+      </div>
+      <div class="toolset-row">
+        <div class="toolset-cat">Illustration</div>
+        <div class="toolset-tags">
+          <span class="tool">Adobe Fresco</span>
+          <span class="tool">Procreate</span>
+        </div>
+      </div>
+      <div class="toolset-row">
+        <div class="toolset-cat">Motion</div>
+        <div class="toolset-tags">
+          <span class="tool">After Effects</span>
+        </div>
+      </div>
+      <div class="toolset-row">
+        <div class="toolset-cat">AI &amp; Research</div>
+        <div class="toolset-tags">
+          <span class="tool">ChatGPT</span>
+          <span class="tool">Claude</span>
+          <span class="tool">Kling AI</span>
+          <span class="tool">Midjourney</span>
+          <span class="tool">Perplexity</span>
+        </div>
+      </div>
     </div>
-    <div class="gallery-img"><img src="hobbi-2.png" alt="Hobbi detail image 2"></div>
-    <div class="gallery-img">
-      <video src="hobbi-3.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="gallery-img"><img src="hobbi-4.png" alt="Hobbi detail image 4"></div>
   </section>
 
-  <a href="downtime.html" class="all-projects-link">
-    <span class="arrow-back">←</span> Previous Project: Downtime
-  </a>
-
-  <a href="casas-collective.html" class="next-project">
-    <div class="next-label">Next Project</div>
-    <div class="next-title-row">
-      <div class="next-title">Casas Collective</div>
-      <div class="next-arrow">→</div>
-    </div>
-    <div class="next-desc">A hospitality brand that specializes in transforming houses into warm, experience-driven homes.</div>
-  </a>
+  <section class="closing-section reveal">
+    <h2>Growing With Intention</h2>
+    <p>I'm early in my career, and building it deliberately matters to me. I'm looking for a team that pushes my thinking further, in an environment where I can keep growing and becoming a better designer.</p>
+  </section>
 </div>
 
 <div class="bottom-sheet">
