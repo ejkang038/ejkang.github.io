@@ -397,6 +397,40 @@
     #carry-shake.shaking { animation: none; }
     .filter-tabs .tool.tab-shake { animation: none; }
   }
+
+  /* ===== Micro-interactions ===== */
+  /* Underline slide on links */
+  .navlinks a, .bottom-links a { position: relative; }
+  .navlinks a::after, .bottom-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -2px;
+    width: 100%; height: 1px; background: currentColor;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.28s ease;
+  }
+  .navlinks a:hover::after, .bottom-links a:hover::after { transform: scaleX(1); }
+  .bottom-links a:hover { text-decoration: none; }
+  .navlinks a:hover { opacity: 1; }
+  /* Button press feedback */
+  .nav-cta, .nav-plus-mobile, .nav-plus { transition: background 0.2s ease, transform 0.12s ease; }
+  .nav-cta:active, .nav-plus-mobile:active, .nav-plus:active { transform: scale(0.95); }
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  /* Page entry fade */
+  .entry { opacity: 0; transform: translateY(16px); }
+  .entry.play { animation: entryFadeUp 0.6s ease forwards; animation-delay: var(--d, 0s); }
+  @keyframes entryFadeUp { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .entry { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+    .navlinks a::after, .bottom-links a::after { transition: none; }
+  }
+
+  /* Project card hover lift + image zoom */
+  .project { transition: transform 0.3s ease; }
+  .project:has(.img-wrap:hover) { transform: translateY(-6px); }
+  .project .img-wrap { cursor: pointer; }
+  .project .project-img img { transition: transform 0.4s ease; }
+  .project .img-wrap:hover .project-img img { transform: scale(1.06); }
 </style>
 </head>
 <body>
@@ -418,8 +452,8 @@
 
   <section class="hero">
     <div class="hero-row">
-      <h1>EJ Kang</h1>
-      <p class="hero-tagline">
+      <h1 class="entry" style="--d:0.05s;">EJ Kang</h1>
+      <p class="hero-tagline entry" style="--d:0.15s;">
         EJ is a UX/UI designer based in Toronto. Agency-trained in North America, she designs with users at the center and a considered visual touch.
       </p>
     </div>
@@ -435,7 +469,7 @@
     </div>
 
     <div class="projects-grid" id="grid-product">
-    <div class="project">
+    <div class="project reveal">
       <a href="hobbi.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Hobbi'});">
         <div class="project-img"><img src="hobbi-hero.png" alt="Hobbi — two phones showing a tennis meetup event and QR ticket"></div>
         <div class="img-overlay">UI · BX</div>
@@ -452,7 +486,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <a href="casas-collective.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Casas Collective'});">
         <div class="project-img"><img src="casas-thumb.png" alt="Casas Collective" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="img-overlay">Web · UXUI · BX</div>
@@ -469,7 +503,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <a href="pearls.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Pearls'});">
         <div class="project-img"><img src="pearls-thumb.png" alt="Pearls — wordmark on a deep brown background"></div>
         <div class="img-overlay">Product · UXUI</div>
@@ -487,7 +521,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <a href="downtime.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Downtime'});">
         <div class="project-img"><img src="downtime-thumb.png" alt="Downtime" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="img-overlay">UX · UI</div>
@@ -504,7 +538,7 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project reveal">
       <div class="img-wrap" id="carry-shake" style="cursor:pointer;">
         <div class="project-img"><img src="carry-thumb.png" alt="Carry" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="img-overlay">Product · BX</div>
@@ -563,7 +597,7 @@
   </section>
 
   <section id="awards">
-    <h2 class="section-label">Awards & Recognition</h2>
+    <h2 class="section-label reveal">Awards & Recognition</h2>
     <div class="award-list">
       <div class="award-item">2026 · Shinhan Bank Hackathon, Innovation Award</div>
       <div class="award-item">2021 · illustration Exhibition, Supported by Jungnang District, Seoul</div>
@@ -571,7 +605,7 @@
   </section>
 
   <section id="bring">
-    <h2 class="section-label">What I can bring to the team</h2>
+    <h2 class="section-label reveal">What I can bring to the team</h2>
 
     <div class="bring-scroll">
     <div class="bring-item">
@@ -581,7 +615,7 @@
 
     <div class="bring-item">
       <div class="bring-title">A Craft First Love for Visuals</div>
-      <p class="bring-desc">I'm drawn to visual craft in illustration, beauty, and fashion for its own sake, not just as a means to an end. That instinct for graphic detail shows up in every screen I design.</p>
+      <p class="bring-desc">I'm drawn to visual craft in illustration, beauty, and fashion. As a designer, I want my work to be visually compelling too, not only functional.</p>
     </div>
 
     <div class="bring-item">
@@ -647,6 +681,31 @@
       carryShake.classList.remove('shaking');
     });
   }
+</script>
+
+<script>
+  (function(){
+    var mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // Page entry fade
+    var entries = document.querySelectorAll('.entry');
+    if (!mql.matches) {
+      requestAnimationFrame(function(){
+        entries.forEach(function(el){ el.classList.add('play'); });
+      });
+    } else {
+      entries.forEach(function(el){ el.classList.add('play'); });
+    }
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.reveal');
+    if (!mql.matches && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(items){
+        items.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      reveals.forEach(function(el){ obs.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('in'); });
+    }
+  })();
 </script>
 </body>
 </html>
