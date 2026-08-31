@@ -63,12 +63,53 @@
   .project-hero { padding: 60px 0 40px; }
   .eyebrow { font-size: 18px; color: #666; margin-bottom: 12px; }
   .project-hero h1 {
-    font-size: clamp(40px, 6.5vw, 64px);
+    font-size: 60px;
     font-weight: 800;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
     line-height: 1.15;
     max-width: 760px;
   }
+
+  /* Word-triggered image reveal */
+  .word-trigger {
+    position: relative;
+    border-bottom: 2px dotted #999;
+    cursor: pointer;
+  }
+  .word-trigger .hover-img {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 14px;
+    transform: translateX(-50%) translateY(8px);
+    width: 220px;
+    height: 160px;
+    border-radius: 10px;
+    background: #eee;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+    text-align: center;
+    padding: 8px;
+  }
+  .word-trigger .hover-img img { width: 100%; height: 100%; object-fit: cover; display: none; }
+  .word-trigger:hover .hover-img,
+  .word-trigger.active .hover-img {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Mobile-only reveal panel (below the paragraph, avoids edge clipping) */
+  .mobile-word-panel { display: none; }
 
   /* PHILOSOPHY (stacked: title above body) */
   .intro-section {
@@ -135,7 +176,31 @@
     .navlinks { display: none; }
     .nav-plus-mobile { display: flex; }
     .nav-right { gap: 0; }
-    .project-hero h1 { font-size: 32px; letter-spacing: -1px; }
+    .project-hero h1 { font-size: 32px; letter-spacing: -1px; line-height: 1.2; }
+    .word-trigger .hover-img { display: none; }
+    .mobile-word-panel {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, margin-top 0.35s ease;
+      margin-top: 0;
+    }
+    .mobile-word-panel.open { max-height: 220px; margin-top: 20px; }
+    .mobile-word-panel-inner {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: #999;
+      text-align: center;
+      overflow: hidden;
+    }
+    .mobile-word-panel-inner img { width: 100%; height: 100%; object-fit: cover; display: none; }
     .intro-section { padding: 60px 0; }
     .intro-label { font-size: 24px; }
     .toolset-section { padding-top: 60px; padding-bottom: 60px; }
@@ -199,7 +264,11 @@
 
   <section class="project-hero">
     <div class="eyebrow">About</div>
-    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a strategist, balancing the functional discipline of UX with an eye for visual craft. I believe neither one works without the other.</h1>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img src="strategist-placeholder.png" alt="Strategist"><span>strategist.png<br>(placeholder)</span></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img src="visual-craft-placeholder.png" alt="Visual craft"><span>visual-craft.png<br>(placeholder)</span></span></span>. I believe neither one works without the other.</h1>
+
+    <div class="mobile-word-panel" id="mobileWordPanel">
+      <div class="mobile-word-panel-inner" id="mobileWordPanelInner">strategist / visual craft image</div>
+    </div>
   </section>
 
   <section class="intro-section reveal">
@@ -292,6 +361,37 @@
     } else {
       reveals.forEach(function(el){ el.classList.add('in'); });
     }
+    // Word-triggered image reveal (desktop: floating bubble via hover/tap; mobile: panel below text)
+    var triggers = document.querySelectorAll('.word-trigger');
+    var mobileMql = window.matchMedia('(max-width: 640px)');
+    var panel = document.getElementById('mobileWordPanel');
+    var panelInner = document.getElementById('mobileWordPanelInner');
+    var panelLabels = { strategist: 'strategist.png (placeholder)', 'visual-craft': 'visual-craft.png (placeholder)' };
+    triggers.forEach(function(t){
+      t.addEventListener('click', function(e){
+        var key = t.dataset.word;
+        if (mobileMql.matches) {
+          var isOpenSame = panel.classList.contains('open') && panel.dataset.current === key;
+          if (isOpenSame) {
+            panel.classList.remove('open');
+            panel.dataset.current = '';
+          } else {
+            panelInner.textContent = panelLabels[key] || '';
+            panel.classList.add('open');
+            panel.dataset.current = key;
+          }
+          return;
+        }
+        var wasActive = t.classList.contains('active');
+        triggers.forEach(function(x){ x.classList.remove('active'); });
+        if (!wasActive) { t.classList.add('active'); }
+      });
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.word-trigger')) {
+        triggers.forEach(function(x){ x.classList.remove('active'); });
+      }
+    });
   })();
 </script>
 </body>
