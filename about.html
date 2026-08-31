@@ -100,7 +100,7 @@
     text-align: center;
     padding: 8px;
   }
-  .word-trigger .hover-img img { width: 100%; height: 100%; object-fit: cover; display: none; }
+  .word-trigger .hover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .word-trigger:hover .hover-img,
   .word-trigger.active .hover-img {
     opacity: 1;
@@ -200,7 +200,7 @@
       text-align: center;
       overflow: hidden;
     }
-    .mobile-word-panel-inner img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .mobile-word-panel-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .intro-section { padding: 60px 0; }
     .intro-label { font-size: 24px; }
     .toolset-section { padding-top: 60px; padding-bottom: 60px; }
@@ -264,10 +264,10 @@
 
   <section class="project-hero">
     <div class="eyebrow">About</div>
-    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img src="strategist-placeholder.png" alt="Strategist"><span>strategist.png<br>(placeholder)</span></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img src="visual-craft-placeholder.png" alt="Visual craft"><span>visual-craft.png<br>(placeholder)</span></span></span>. I believe neither one works without the other.</h1>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img src="strategist-placeholder.png" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img src="visual-craft-placeholder.png" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
 
     <div class="mobile-word-panel" id="mobileWordPanel">
-      <div class="mobile-word-panel-inner" id="mobileWordPanelInner">strategist / visual craft image</div>
+      <div class="mobile-word-panel-inner" id="mobileWordPanelInner"></div>
     </div>
   </section>
 
@@ -366,7 +366,7 @@
     var mobileMql = window.matchMedia('(max-width: 640px)');
     var panel = document.getElementById('mobileWordPanel');
     var panelInner = document.getElementById('mobileWordPanelInner');
-    var panelLabels = { strategist: 'strategist.png (placeholder)', 'visual-craft': 'visual-craft.png (placeholder)' };
+    var panelImages = { strategist: 'strategist-placeholder.png', 'visual-craft': 'visual-craft-placeholder.png' };
     triggers.forEach(function(t){
       t.addEventListener('click', function(e){
         var key = t.dataset.word;
@@ -376,7 +376,7 @@
             panel.classList.remove('open');
             panel.dataset.current = '';
           } else {
-            panelInner.textContent = panelLabels[key] || '';
+            panelInner.innerHTML = '<img src="' + panelImages[key] + '" alt="' + key + '" style="width:100%;height:100%;object-fit:cover;display:block;">';
             panel.classList.add('open');
             panel.dataset.current = key;
           }
