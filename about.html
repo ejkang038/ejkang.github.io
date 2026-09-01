@@ -19,70 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #111;
-    background: #fff;
-    line-height: 1.5;
-  }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 32px; }
-
-  /* NAV (동일) */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(237, 237, 237, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0 0 14px 14px;
-    padding: 12px 12px 12px 22px;
-    margin-top: 0;
-  }
-  .nav-left { display: flex; align-items: baseline; gap: 12px; }
-  .logo { font-weight: 700; font-size: 15px; letter-spacing: -0.2px; }
-  .logo sup { font-size: 10px; }
-  .nav-right { display: flex; align-items: center; gap: 24px; }
-  .navlinks { display: flex; gap: 24px; }
-  .navlinks a { color: #111; text-decoration: none; font-size: 15px; font-weight: 500; }
-  .navlinks a:hover { opacity: 0.6; }
-  .nav-cta {
-    background: #111; color: #fff; font-size: 14px; font-weight: 600;
-    padding: 11px 20px; border-radius: 100px; text-decoration: none; white-space: nowrap;
-  }
-  .nav-cta:hover { background: #333; }
-  .nav-plus-mobile {
-    display: none; width: 40px; height: 40px; border-radius: 50%;
-    background: #111; align-items: center; justify-content: center;
-    text-decoration: none; color: #fff; font-size: 20px; flex-shrink: 0;
-    border: none; cursor: pointer; font-family: inherit; padding: 0; line-height: 1;
-  }
-  .nav-plus-mobile:hover { background: #333; }
-  .nav-mobile-menu {
-    display: none;
-    position: absolute;
-    top: 62px;
-    right: 12px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    padding: 8px;
-    flex-direction: column;
-    min-width: 160px;
-    z-index: 200;
-  }
-  .nav-mobile-menu.open { display: flex; }
-  .nav-mobile-menu a {
-    padding: 12px 16px; color: #111; text-decoration: none;
-    font-size: 15px; font-weight: 500; border-radius: 8px;
-  }
-  .nav-mobile-menu a:hover { background: #f5f5f5; }
-
   /* PAGE HERO */
   .project-hero { padding: 60px 0 40px; }
   .eyebrow { font-size: 18px; color: #666; margin-bottom: 12px; }
@@ -188,42 +126,12 @@
 
   /* CONTACT (동일) */
   .bottom-sheet { background: #111; color: #fff; margin-top: 40px; }
-  .contact { padding: 100px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
-  .contact h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
-  .copyright-sub { font-size: 16px; color: #888; }
-  .bottom-links { display: flex; flex-direction: column; gap: 12px; text-align: left; }
-  .bottom-links a { color: #fff; font-weight: 500; text-decoration: none; font-size: 16px; }
-  .bottom-links a:hover { text-decoration: underline; }
-
   @media (max-width: 640px) {
-    .wrap { padding: 0 16px; }
-    .navlinks { display: none; }
-    .nav-plus-mobile { display: flex; }
-    .nav-right { gap: 0; }
     .project-hero h1 { font-size: 32px; letter-spacing: -1px; line-height: 1.2; }
     .word-trigger .hover-img { display: none; }
-    .mobile-word-panel {
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, margin-top 0.35s ease;
-      margin-top: 0;
-    }
+    .mobile-word-panel { display: block; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.35s ease; margin-top: 0; }
     .mobile-word-panel.open { max-height: 220px; margin-top: 20px; }
-    .mobile-word-panel-inner {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      background: #eee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: #999;
-      text-align: center;
-      overflow: hidden;
-    }
+    .mobile-word-panel-inner { width: 100%; height: 200px; border-radius: 10px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #999; text-align: center; overflow: hidden; }
     .mobile-word-panel-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .intro-section { padding: 60px 0; }
     .intro-label { font-size: 24px; }
@@ -233,39 +141,6 @@
     .toolset-cat { width: auto; }
     .closing-section { padding: 60px 0; }
     .closing-section h2 { font-size: 24px; }
-
-    /* Copyright / footer */
-    .contact { flex-direction: column; gap: 24px; padding: 60px 0; }
-    .contact h2 { font-size: 24px; }
-    .copyright-sub { font-size: 13px; }
-    .bottom-links a { font-size: 14px; }
-  }
-
-  /* ===== Micro-interactions ===== */
-  /* Underline slide on links */
-  .navlinks a, .bottom-links a { position: relative; }
-  .navlinks a::after, .bottom-links a::after {
-    content: ''; position: absolute; left: 0; bottom: -2px;
-    width: 100%; height: 1px; background: currentColor;
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.28s ease;
-  }
-  .navlinks a:hover::after, .bottom-links a:hover::after { transform: scaleX(1); }
-  .bottom-links a:hover { text-decoration: none; }
-  .navlinks a:hover { opacity: 1; }
-  /* Button press feedback */
-  .nav-cta, .nav-plus-mobile, .nav-plus { transition: background 0.2s ease, transform 0.12s ease; }
-  .nav-cta:active, .nav-plus-mobile:active, .nav-plus:active { transform: scale(0.95); }
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-  /* Page entry fade */
-  .entry { opacity: 0; transform: translateY(16px); }
-  .entry.play { animation: entryFadeUp 0.6s ease forwards; animation-delay: var(--d, 0s); }
-  @keyframes entryFadeUp { to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal, .entry { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
-    .navlinks a::after, .bottom-links a::after { transition: none; }
   }
 </style>
 </head>
@@ -366,29 +241,8 @@
   </div>
 </div>
 
-
 <script>
   (function(){
-    var mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // Page entry fade
-    var entries = document.querySelectorAll('.entry');
-    if (!mql.matches) {
-      requestAnimationFrame(function(){
-        entries.forEach(function(el){ el.classList.add('play'); });
-      });
-    } else {
-      entries.forEach(function(el){ el.classList.add('play'); });
-    }
-    // Scroll reveal
-    var reveals = document.querySelectorAll('.reveal');
-    if (!mql.matches && 'IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function(items){
-        items.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-      }, { threshold: 0.15 });
-      reveals.forEach(function(el){ obs.observe(el); });
-    } else {
-      reveals.forEach(function(el){ el.classList.add('in'); });
-    }
     // Word-triggered image reveal (desktop: floating bubble via hover/tap; mobile: panel below text)
     var triggers = document.querySelectorAll('.word-trigger');
     var mobileMql = window.matchMedia('(max-width: 640px)');
@@ -423,25 +277,6 @@
   })();
 </script>
 
-<script>
-  function toggleMobileNav(){
-    var menu = document.getElementById('navMobileMenu');
-    var btn = document.getElementById('navMobileToggle');
-    if (!menu || !btn) return;
-    var isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    btn.textContent = isOpen ? '\u00d7' : '+';
-  }
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('navMobileMenu');
-    var btn = document.getElementById('navMobileToggle');
-    if (!menu || !btn) return;
-    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '+';
-    }
-  });
-</script>
+<script src="site.js"></script>
 </body>
 </html>
