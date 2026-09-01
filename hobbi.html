@@ -9,6 +9,10 @@
   gtag('js', new Date());
   gtag('config', 'G-WKLVXXZTN4');
 </script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hobbi — EJ Kang</title>
@@ -56,8 +60,28 @@
     display: none; width: 40px; height: 40px; border-radius: 50%;
     background: #111; align-items: center; justify-content: center;
     text-decoration: none; color: #fff; font-size: 20px; flex-shrink: 0;
+    border: none; cursor: pointer; font-family: inherit; padding: 0; line-height: 1;
   }
   .nav-plus-mobile:hover { background: #333; }
+  .nav-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 62px;
+    right: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 8px;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 200;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    padding: 12px 16px; color: #111; text-decoration: none;
+    font-size: 15px; font-weight: 500; border-radius: 8px;
+  }
+  .nav-mobile-menu a:hover { background: #f5f5f5; }
 
   /* PROJECT HEADER */
   .project-hero { padding: 60px 0 40px; }
@@ -258,7 +282,11 @@
         <a href="about.html">About</a>
       </div>
       <a href="index.html#contact" class="nav-cta">Open to Work</a>
-      <a href="index.html#contact" class="nav-plus-mobile">+</a>
+      <button type="button" class="nav-plus-mobile" id="navMobileToggle" aria-expanded="false" aria-label="Open menu" onclick="toggleMobileNav()">+</button>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="index.html#projects">Projects</a>
+      <a href="about.html">About</a>
     </div>
   </nav>
 
@@ -363,6 +391,27 @@
       reveals.forEach(function(el){ el.classList.add('in'); });
     }
   })();
+</script>
+
+<script>
+  function toggleMobileNav(){
+    var menu = document.getElementById('navMobileMenu');
+    var btn = document.getElementById('navMobileToggle');
+    if (!menu || !btn) return;
+    var isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.textContent = isOpen ? '×' : '+';
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('navMobileMenu');
+    var btn = document.getElementById('navMobileToggle');
+    if (!menu || !btn) return;
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '+';
+    }
+  });
 </script>
 </body>
 </html>

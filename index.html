@@ -9,6 +9,10 @@
   gtag('js', new Date());
   gtag('config', 'G-WKLVXXZTN4');
 </script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EJ Kang — Portfolio</title>
@@ -88,8 +92,36 @@
     color: #fff;
     font-size: 20px;
     flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    line-height: 1;
   }
   .nav-plus-mobile:hover { background: #333; }
+  .nav-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 62px;
+    right: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 8px;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 200;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    padding: 12px 16px;
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  .nav-mobile-menu a:hover { background: #f5f5f5; }
   .nav-plus {
     width: 40px;
     height: 40px;
@@ -174,6 +206,20 @@
   }
   .projects-grid[data-category="graphic"] {
     display: none;
+  }
+  .graphic-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .graphic-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  @media (max-width: 640px) {
+    .graphic-gallery { grid-template-columns: repeat(2, 1fr); }
   }
   .project-tags {
     display: flex;
@@ -446,7 +492,11 @@
         <a href="about.html">About</a>
       </div>
       <a href="#contact" class="nav-cta">Open to Work</a>
-      <a href="#contact" class="nav-plus-mobile">+</a>
+      <button type="button" class="nav-plus-mobile" id="navMobileToggle" aria-expanded="false" aria-label="Open menu" onclick="toggleMobileNav()">+</button>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="#projects">Projects</a>
+      <a href="about.html">About</a>
     </div>
   </nav>
 
@@ -464,7 +514,7 @@
       <h2 class="section-label">Selected Projects</h2>
       <div class="filter-tabs">
         <span class="tool active" data-tab="product">Product/UX/UI</span>
-        <span class="tool" data-tab="graphic" style="opacity:0.3;">Graphic</span>
+        <span class="tool" data-tab="graphic">Graphic</span>
       </div>
     </div>
 
@@ -557,42 +607,22 @@
     </div>
     </div>
 
-    <div class="projects-grid" id="grid-graphic" style="display:none;">
-    <div class="project">
-      <div class="img-wrap">
-        <div class="project-img">Project image</div>
-      </div>
-      <div class="title-row">
-        <div class="project-title">Illustration</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="img-wrap">
-        <div class="project-img">Project image</div>
-      </div>
-      <div class="title-row">
-        <div class="project-title">Poster</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="img-wrap">
-        <div class="project-img">Project image</div>
-      </div>
-      <div class="title-row">
-        <div class="project-title">Motion graphic</div>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="img-wrap">
-        <div class="project-img">Project image</div>
-      </div>
-      <div class="title-row">
-        <div class="project-title">Styling & Makeup</div>
-      </div>
-    </div>
+    <div class="projects-grid graphic-gallery" id="grid-graphic" style="display:none;">
+      <img src="graphic-1.jpg" alt="Graphic work 1">
+      <img src="graphic-2.jpg" alt="Graphic work 2">
+      <img src="graphic-3.jpg" alt="Graphic work 3">
+      <img src="graphic-4.jpg" alt="Graphic work 4">
+      <img src="graphic-5.jpg" alt="Graphic work 5">
+      <img src="graphic-6.jpg" alt="Graphic work 6">
+      <img src="graphic-7.jpg" alt="Graphic work 7">
+      <img src="graphic-8.jpg" alt="Graphic work 8">
+      <img src="graphic-9.jpg" alt="Graphic work 9">
+      <img src="graphic-10.jpg" alt="Graphic work 10">
+      <img src="graphic-11.jpg" alt="Graphic work 11">
+      <img src="graphic-12.jpg" alt="Graphic work 12">
+      <img src="graphic-13.jpg" alt="Graphic work 13">
+      <img src="graphic-14.jpg" alt="Graphic work 14">
+      <img src="graphic-15.jpg" alt="Graphic work 15">
     </div>
   </section>
 
@@ -648,22 +678,13 @@
     product: document.getElementById('grid-product'),
     graphic: document.getElementById('grid-graphic')
   };
+  const filterDisplay = { product: 'grid', graphic: 'grid' };
   filterTabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
-      if (tab.dataset.tab === 'graphic') {
-        // Graphic is disabled — just shake
-        tab.classList.remove('tab-shake');
-        void tab.offsetWidth;
-        tab.classList.add('tab-shake');
-        tab.addEventListener('animationend', function() {
-          tab.classList.remove('tab-shake');
-        }, { once: true });
-        return;
-      }
       filterTabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
       Object.keys(filterGrids).forEach(function(key) {
-        filterGrids[key].style.display = (key === tab.dataset.tab) ? 'grid' : 'none';
+        filterGrids[key].style.display = (key === tab.dataset.tab) ? filterDisplay[key] : 'none';
       });
     });
   });
@@ -706,6 +727,27 @@
       reveals.forEach(function(el){ el.classList.add('in'); });
     }
   })();
+</script>
+
+<script>
+  function toggleMobileNav(){
+    var menu = document.getElementById('navMobileMenu');
+    var btn = document.getElementById('navMobileToggle');
+    if (!menu || !btn) return;
+    var isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.textContent = isOpen ? '\u00d7' : '+';
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('navMobileMenu');
+    var btn = document.getElementById('navMobileToggle');
+    if (!menu || !btn) return;
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = '+';
+    }
+  });
 </script>
 </body>
 </html>
