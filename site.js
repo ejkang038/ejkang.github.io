@@ -45,24 +45,30 @@ document.addEventListener('click', function(e){
   }
 });
 
-/* Lazy video: nothing downloads until the clip scrolls into view */
+/* Video playback: autoplay handles startup, this only pauses off-screen clips */
 (function(){
   var vids = document.querySelectorAll('video.lazy-video');
-  if (!vids.length) return;
-  if (!('IntersectionObserver' in window)) {
-    vids.forEach(function(v){ v.setAttribute('preload','metadata'); v.play().catch(function(){}); });
-    return;
-  }
+  if (!vids.length || !('IntersectionObserver' in window)) return;
   var obs = new IntersectionObserver(function(items){
     items.forEach(function(e){
       var v = e.target;
       if (e.isIntersecting) {
-        v.preload = 'auto';
-        v.play().catch(function(){});
+        if (v.paused) v.play().catch(function(){});
       } else if (!v.paused) {
         v.pause();
       }
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.1 });
   vids.forEach(function(v){ obs.observe(v); });
+})();
+
+/* Gallery images: drop the skeleton once each image has actually loaded */
+(function(){
+  var imgs = document.querySelectorAll('.graphic-gallery img');
+  if (!imgs.length) return;
+  imgs.forEach(function(img){
+    if (img.complete && img.naturalWidth) { img.classList.add('loaded'); return; }
+    img.addEventListener('load', function(){ img.classList.add('loaded'); }, { once: true });
+    img.addEventListener('error', function(){ img.classList.add('loaded'); }, { once: true });
+  });
 })();

@@ -89,15 +89,38 @@
     margin-bottom: 60px;
   }
   .graphic-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    display: block;
+    column-count: 3;
+    column-gap: 16px;
   }
   .graphic-gallery img {
     display: block;
     width: 100%;
     height: auto;
+    margin-bottom: 16px;
+    break-inside: avoid;
     border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient(100deg, rgba(0,0,0,0) 32%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0) 68%);
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    animation: gallerySkeleton 1.4s ease-in-out infinite;
+  }
+  .graphic-gallery img.loaded {
+    background: none;
+    animation: galleryFadeIn 0.45s ease;
+  }
+  @keyframes gallerySkeleton {
+    from { background-position: 170% 0; }
+    to   { background-position: -70% 0; }
+  }
+  @keyframes galleryFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .graphic-gallery img,
+    .graphic-gallery img.loaded { animation: none; }
   }
   .project-img {
     width: 100%;
@@ -206,7 +229,7 @@
     border-radius: 10px;
     padding: 24px 32px;
     flex: 0 0 380px;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
   .bring-item:hover {
     border-color: #111;
@@ -257,7 +280,7 @@
     .hero-tagline { max-width: 100%; }
     .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
     /* must stay after .projects-grid: same specificity, later rule wins */
-    .graphic-gallery { grid-template-columns: repeat(2, 1fr); }
+    .graphic-gallery { column-count: 2; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; margin: 60px 0 16px; }
     .filter-tabs .tool { font-size: 12px; padding: 8px 14px; }
     .section-label { font-size: 22px; margin: 60px 0 16px; }
@@ -397,21 +420,21 @@
     </div>
 
     <div class="projects-grid graphic-gallery" id="grid-graphic" style="display:none;">
-      <img loading="lazy" decode="async" width="1080" height="1528" src="graphic-1.webp" alt="Graphic work 1">
-      <img loading="lazy" decode="async" width="1779" height="2739" src="graphic-2.webp" alt="Graphic work 2">
-      <img loading="lazy" decode="async" width="2307" height="2307" src="graphic-3.webp" alt="Graphic work 3">
-      <img loading="lazy" decode="async" width="2160" height="2160" src="graphic-4.webp" alt="Graphic work 4">
+      <img loading="lazy" decode="async" width="1000" height="1415" src="graphic-1.webp" alt="Graphic work 1">
+      <img loading="lazy" decode="async" width="1000" height="1540" src="graphic-2.webp" alt="Graphic work 2">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="graphic-3.webp" alt="Graphic work 3">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="graphic-4.webp" alt="Graphic work 4">
       <img loading="lazy" decode="async" width="621" height="878" src="graphic-5.webp" alt="Graphic work 5">
-      <img loading="lazy" decode="async" width="1920" height="1920" src="graphic-6.webp" alt="Graphic work 6">
-      <img loading="lazy" decode="async" width="3154" height="3604" src="graphic-7.webp" alt="Graphic work 7">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="graphic-6.webp" alt="Graphic work 6">
+      <img loading="lazy" decode="async" width="1000" height="1143" src="graphic-7.webp" alt="Graphic work 7">
       <img loading="lazy" decode="async" width="525" height="525" src="graphic-8.webp" alt="Graphic work 8">
       <img loading="lazy" decode="async" width="525" height="525" src="graphic-9.webp" alt="Graphic work 9">
       <img loading="lazy" decode="async" width="834" height="1194" src="graphic-10.webp" alt="Graphic work 10">
-      <img loading="lazy" decode="async" width="1856" height="2464" src="graphic-11.webp" alt="Graphic work 11">
-      <img loading="lazy" decode="async" width="1718" height="2280" src="graphic-12.webp" alt="Graphic work 12">
-      <img loading="lazy" decode="async" width="1684" height="2384" src="graphic-13.webp" alt="Graphic work 13">
-      <img loading="lazy" decode="async" width="1080" height="1080" src="graphic-14.webp" alt="Graphic work 14">
-      <img loading="lazy" decode="async" width="1446" height="2045" src="graphic-15.webp" alt="Graphic work 15">
+      <img loading="lazy" decode="async" width="1000" height="1328" src="graphic-11.webp" alt="Graphic work 11">
+      <img loading="lazy" decode="async" width="1000" height="1327" src="graphic-12.webp" alt="Graphic work 12">
+      <img loading="lazy" decode="async" width="1000" height="1416" src="graphic-13.webp" alt="Graphic work 13">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="graphic-14.webp" alt="Graphic work 14">
+      <img loading="lazy" decode="async" width="1000" height="1414" src="graphic-15.webp" alt="Graphic work 15">
     </div>
   </section>
 
@@ -467,7 +490,7 @@
     product: document.getElementById('grid-product'),
     graphic: document.getElementById('grid-graphic')
   };
-  const filterDisplay = { product: 'grid', graphic: 'grid' };
+  const filterDisplay = { product: 'grid', graphic: 'block' };
   filterTabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
       filterTabs.forEach(function(t) { t.classList.remove('active'); });
