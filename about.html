@@ -167,7 +167,7 @@
 
   <section class="project-hero">
     <div class="eyebrow">About</div>
-    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img src="strategist-placeholder.png" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img src="visual-craft-placeholder.png" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img loading="lazy" decode="async" width="1920" height="1280" src="strategist-placeholder.webp" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img loading="lazy" decode="async" width="1080" height="1080" src="visual-craft-placeholder.webp" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
 
     <div class="mobile-word-panel" id="mobileWordPanel">
       <div class="mobile-word-panel-inner" id="mobileWordPanelInner"></div>
@@ -248,7 +248,7 @@
     var mobileMql = window.matchMedia('(max-width: 640px)');
     var panel = document.getElementById('mobileWordPanel');
     var panelInner = document.getElementById('mobileWordPanelInner');
-    var panelImages = { strategist: 'strategist-placeholder.png', 'visual-craft': 'visual-craft-placeholder.png' };
+    var panelImages = { strategist: 'strategist-placeholder.webp', 'visual-craft': 'visual-craft-placeholder.webp' };
     triggers.forEach(function(t){
       t.addEventListener('click', function(e){
         var key = t.dataset.word;

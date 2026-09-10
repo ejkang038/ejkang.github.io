@@ -44,3 +44,25 @@ document.addEventListener('click', function(e){
     btn.textContent = '+';
   }
 });
+
+/* Lazy video: nothing downloads until the clip scrolls into view */
+(function(){
+  var vids = document.querySelectorAll('video.lazy-video');
+  if (!vids.length) return;
+  if (!('IntersectionObserver' in window)) {
+    vids.forEach(function(v){ v.setAttribute('preload','metadata'); v.play().catch(function(){}); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(items){
+    items.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        v.preload = 'auto';
+        v.play().catch(function(){});
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  vids.forEach(function(v){ obs.observe(v); });
+})();
