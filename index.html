@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WKLVXXZTN4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WKLVXXZTN4');
-</script>
+<!-- Umami -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="9243c5bb-2964-4103-bc8a-e9dfcaadfc21"></script>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -332,7 +326,7 @@
 
     <div class="projects-grid" id="grid-product">
     <div class="project reveal">
-      <a href="hobbi.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Hobbi'});">
+      <a href="hobbi.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Hobbi">
         <div class="project-img"><img fetchpriority="high" decode="async" width="1920" height="1080" src="hobbi-hero.webp" alt="Hobbi — two phones showing a tennis meetup event and QR ticket"></div>
         <div class="img-overlay">UI · BX</div>
       </a>
@@ -349,7 +343,7 @@
     </div>
 
     <div class="project reveal">
-      <a href="casas-collective.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Casas Collective'});">
+      <a href="casas-collective.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Casas Collective">
         <div class="project-img"><img loading="lazy" decode="async" width="1920" height="1080" src="casas-thumb.webp" alt="Casas Collective" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="img-overlay">Web · UXUI · BX</div>
       </a>
@@ -366,7 +360,7 @@
     </div>
 
     <div class="project reveal">
-      <a href="pearls.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Pearls'});">
+      <a href="pearls.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Pearls">
         <div class="project-img"><img loading="lazy" decode="async" width="1920" height="1080" src="pearls-thumb.webp" alt="Pearls — wordmark on a deep brown background"></div>
         <div class="img-overlay">Product · UXUI</div>
       </a>
@@ -384,7 +378,7 @@
     </div>
 
     <div class="project reveal">
-      <a href="downtime.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" onclick="gtag('event', 'project_click', {project_name: 'Downtime'});">
+      <a href="downtime.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Downtime">
         <div class="project-img"><img loading="lazy" decode="async" width="1920" height="1080" src="downtime-thumb.webp" alt="Downtime" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="img-overlay">UX · UI</div>
       </a>
@@ -476,9 +470,9 @@
         <p class="copyright-sub">All Copyright reserved</p>
       </div>
       <div class="bottom-links">
-        <a href="mailto:ejkang038@gmail.com" onclick="gtag('event', 'external_link_click', {link_type: 'email'});">ejkang038@gmail.com</a>
-        <a href="https://docs.google.com/document/d/1tygZGHCwR9sJoc2kIixEkGQdjlFJI0BtpjXjynefcQQ/edit?usp=sharing" target="_blank" rel="noopener" onclick="gtag('event', 'resume_download');">Resume</a>
-        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener" onclick="gtag('event', 'external_link_click', {link_type: 'linkedin'});">Linkedin</a>
+        <a href="mailto:ejkang038@gmail.com" data-umami-event="external-link" data-umami-event-link="email">ejkang038@gmail.com</a>
+        <a href="https://docs.google.com/document/d/1tygZGHCwR9sJoc2kIixEkGQdjlFJI0BtpjXjynefcQQ/edit?usp=sharing" target="_blank" rel="noopener" data-umami-event="resume-click">Resume</a>
+        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener" data-umami-event="external-link" data-umami-event-link="linkedin">Linkedin</a>
       </div>
     </section>
   </div>
@@ -498,6 +492,7 @@
       Object.keys(filterGrids).forEach(function(key) {
         filterGrids[key].style.display = (key === tab.dataset.tab) ? filterDisplay[key] : 'none';
       });
+      if (window.setScrollContext) setScrollContext('home-' + tab.dataset.tab);
     });
   });
 
@@ -505,7 +500,7 @@
   var carryShake = document.getElementById('carry-shake');
   if (carryShake) {
     carryShake.addEventListener('click', function() {
-      gtag('event', 'carry_shake_click');
+      if (window.umami) umami.track('carry-shake');
       carryShake.classList.remove('shaking');
       void carryShake.offsetWidth; // restart animation
       carryShake.classList.add('shaking');

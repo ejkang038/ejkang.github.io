@@ -62,6 +62,45 @@ document.addEventListener('click', function(e){
   vids.forEach(function(v){ obs.observe(v); });
 })();
 
+/* Scroll depth tracking (Umami)
+   Fires 'scroll-depth' at 25 / 50 / 75 / 100 percent, once per context.
+   On the homepage the context switches with the Product / Graphic tabs. */
+var setScrollContext;
+(function(){
+  var MARKS = [25, 50, 75, 100];
+  var file = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+  var context = (file === '' || file === 'index') ? 'home-product' : file;
+  var reached = {};
+
+  function check(){
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var pct = ((window.pageYOffset || doc.scrollTop) / scrollable) * 100;
+    MARKS.forEach(function(m){
+      if (pct >= m && !reached[m]) {
+        reached[m] = true;
+        if (window.umami) umami.track('scroll-depth', { page: context, depth: m });
+      }
+    });
+  }
+
+  setScrollContext = function(next){
+    if (next === context) return;
+    context = next;
+    reached = {};
+    check();
+  };
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; check(); });
+  }, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+})();
+
 /* Gallery images: drop the skeleton once each image has actually loaded */
 (function(){
   var imgs = document.querySelectorAll('.graphic-gallery img');
