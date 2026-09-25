@@ -9,10 +9,18 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon-180.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EJ Kang — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>EJ Kang | Portfolio</title>
+<meta name="description" content="EJ Kang is a UX/UI designer based in Toronto. Agency-trained in North America, she designs with users at the center and a considered visual touch.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EJ Kang">
+<meta property="og:title" content="EJ Kang | Portfolio">
+<meta property="og:description" content="EJ Kang is a UX/UI designer based in Toronto. Agency-trained in North America, she designs with users at the center and a considered visual touch.">
+<meta property="og:url" content="https://ej-kang.com/">
+<meta property="og:image" content="https://ej-kang.com/assets/og/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
 <style>
   /* HERO */
@@ -305,6 +313,7 @@
       <a href="about.html">About</a>
     </div>
   </nav>
+  <main>
 
   <section class="hero">
     <div class="hero-row">
@@ -327,7 +336,7 @@
     <div class="projects-grid" id="grid-product">
     <div class="project reveal">
       <a href="hobbi.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Hobbi">
-        <div class="project-img"><img fetchpriority="high" decode="async" width="1920" height="1080" src="assets/hobbi/hobbi-hero.webp" alt="Hobbi — two phones showing a tennis meetup event and QR ticket"></div>
+        <div class="project-img"><img fetchpriority="high" decode="async" width="1920" height="1080" src="assets/hobbi/hobbi-hero.webp" alt="Hobbi: two phones showing a tennis meetup event and QR ticket"></div>
         <div class="img-overlay">UI · BX</div>
       </a>
       <div class="title-row">
@@ -361,7 +370,7 @@
 
     <div class="project reveal">
       <a href="pearls.html" class="img-wrap" style="text-decoration:none;color:inherit;display:block;" data-umami-event="project-click" data-umami-event-project="Pearls">
-        <div class="project-img"><img loading="lazy" decode="async" width="1920" height="1080" src="assets/pearls/pearls-thumb.webp" alt="Pearls — wordmark on a deep brown background"></div>
+        <div class="project-img"><img loading="lazy" decode="async" width="1920" height="1080" src="assets/pearls/pearls-thumb.webp" alt="Pearls: wordmark on a deep brown background"></div>
         <div class="img-overlay">Product · UXUI</div>
       </a>
       <div class="title-row">
@@ -460,9 +469,10 @@
     </div>
     </div>
   </section>
+  </main>
 </div>
 
-<div class="bottom-sheet">
+<footer class="bottom-sheet">
   <div class="wrap">
     <section id="contact" class="contact">
       <div class="bottom-left">
@@ -476,7 +486,7 @@
       </div>
     </section>
   </div>
-</div>
+</footer>
 
 <script>
   const filterTabs = document.querySelectorAll('.filter-tabs .tool');
