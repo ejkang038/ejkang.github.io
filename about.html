@@ -4,16 +4,16 @@
 <!-- Umami -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="9243c5bb-2964-4103-bc8a-e9dfcaadfc21"></script>
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon-180.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — EJ Kang</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="css/site.css">
 <style>
   /* PAGE HERO */
   .project-hero { padding: 60px 0 40px; }
@@ -161,7 +161,7 @@
 
   <section class="project-hero">
     <div class="eyebrow">About</div>
-    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img loading="lazy" decode="async" width="1920" height="1280" src="strategist-placeholder.webp" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img loading="lazy" decode="async" width="1080" height="1080" src="visual-craft-placeholder.webp" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img loading="lazy" decode="async" width="1920" height="1280" src="assets/about/strategist-placeholder.webp" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img loading="lazy" decode="async" width="1080" height="1080" src="assets/about/visual-craft-placeholder.webp" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
 
     <div class="mobile-word-panel" id="mobileWordPanel">
       <div class="mobile-word-panel-inner" id="mobileWordPanelInner"></div>
@@ -242,7 +242,7 @@
     var mobileMql = window.matchMedia('(max-width: 640px)');
     var panel = document.getElementById('mobileWordPanel');
     var panelInner = document.getElementById('mobileWordPanelInner');
-    var panelImages = { strategist: 'strategist-placeholder.webp', 'visual-craft': 'visual-craft-placeholder.webp' };
+    var panelImages = { strategist: 'assets/about/strategist-placeholder.webp', 'visual-craft': 'assets/about/visual-craft-placeholder.webp' };
     triggers.forEach(function(t){
       t.addEventListener('click', function(e){
         var key = t.dataset.word;
@@ -272,6 +272,6 @@
   })();
 </script>
 
-<script src="site.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>
