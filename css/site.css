@@ -141,7 +141,7 @@ nav {
   display: flex; flex-direction: column; padding: 48px 0;
 }
 .detail-info::-webkit-scrollbar { display: none; }
-.detail-info h1 { font-size: clamp(48px, 6vw, 96px); font-weight: 600; letter-spacing: -1.5px; line-height: 0.95; margin-bottom: 48px; }
+.detail-info h1 { font-size: clamp(40px, calc(5.4vw - 8px), 70px); /* sized so "Casas Collective" fits on one line */ font-weight: 600; letter-spacing: -1.5px; line-height: 0.95; margin-bottom: 48px; }
 .detail-cols {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-template-areas: "year disc" "credit about";
