@@ -23,37 +23,6 @@
 <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
 <style>
-  /* PROJECT HEADER */
-  .project-hero { padding: 60px 0 40px; }
-  .eyebrow { font-size: 18px; color: #666; margin-bottom: 12px; }
-  .project-hero h1 {
-    font-size: clamp(56px, 11vw, 110px);
-    font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 0.95;
-    margin-bottom: 48px;
-  }
-
-  /* META GRID (About / Credit / Disciplines) */
-  .meta-grid {
-    display: flex;
-    gap: 56px;
-    padding-bottom: 60px;
-    flex-wrap: wrap;
-  }
-  .meta-block { width: auto; max-width: 260px; }
-  .meta-block h3 {
-    font-size: 18px;
-    font-weight: 500;
-    color: #111;
-    margin-bottom: 10px;
-  }
-  .meta-block p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 4px;
-  }
-  .meta-block p:last-child { margin-bottom: 0; }
 
   /* HERO IMAGE (full-bleed, 원본 비율 유지) */
   .detail-hero-img {
@@ -61,28 +30,6 @@
     background: #eee;
   }
   .detail-hero-img img { width: 100%; height: auto; display: block; }
-
-  /* INTRO */
-  .intro-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 80px 0;
-  }
-  .intro-label {
-    font-size: 40px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .intro-body {
-    max-width: 560px;
-  }
-  .intro-body p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 16px;
-  }
-  .intro-body p:last-child { margin-bottom: 0; }
 
   /* GALLERY */
   .gallery {
@@ -100,151 +47,78 @@
   .gallery-img img,
   .gallery-img video { width: 100%; height: auto; display: block; }
 
-  /* NEXT PROJECT CTA */
-  .all-projects-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: #666;
-    font-size: 14px;
-    padding: 40px 0 0;
-    transition: color 0.2s ease;
-  }
-  .all-projects-link:hover { color: #111; }
-  .all-projects-link .arrow-back {
-    transition: transform 0.2s ease;
-  }
-  .all-projects-link:hover .arrow-back { transform: translateX(-4px); }
-  .next-project {
-    display: block;
-    text-decoration: none;
-    color: #111;
-    padding: 32px 0 80px;
-  }
-  .next-label {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-  }
-  .next-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .next-title {
-    font-size: clamp(40px, 7vw, 72px);
-    font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1;
-    transition: opacity 0.2s ease;
-  }
-  .next-arrow {
-    font-size: 32px;
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-  }
-  .next-desc {
-    font-size: 16px;
-    color: #555;
-    margin-top: 12px;
-    max-width: 560px;
-  }
-  .next-project:hover .next-title { opacity: 0.6; }
-  .next-project:hover .next-arrow { transform: translateX(8px); }
-
   /* CONTACT (동일) */
   .bottom-sheet { background: #111; color: #fff; margin-top: 80px; }
-  @media (max-width: 640px) {
-    .meta-grid { flex-direction: column; gap: 28px; }
-    .meta-block { max-width: 100%; }
-    .intro-section { flex-direction: column; gap: 20px; }
-    .intro-label { font-size: 26px; }
-  }
 </style>
 </head>
 <body>
 
 <main>
-<div class="wrap">
+<div class="wrap wrap--wide">
   <nav>
     <div class="nav-left">
       <a href="index.html" style="text-decoration:none;color:inherit;"><span class="logo">EJ KANG<sup>®</sup></span></a>
     </div>
-    <div class="nav-right">
-      <div class="navlinks">
+    <div class="navlinks">
         <a href="index.html#projects">Projects</a>
+        <a href="#">Archive</a>
         <a href="about.html">About</a>
       </div>
-      <a href="index.html#contact" class="nav-cta">Open to Work</a>
+    <div class="nav-right">
+      <a href="index.html#contact" class="nav-cta"><span class="nav-cta-roll"><span class="cta-stack"><span>Open to Work</span><span>Open to Work</span></span></span></a>
       <button type="button" class="nav-plus-mobile" id="navMobileToggle" aria-expanded="false" aria-label="Open menu" onclick="toggleMobileNav()">+</button>
     </div>
     <div class="nav-mobile-menu" id="navMobileMenu">
       <a href="index.html#projects">Projects</a>
+      <a href="#">Archive</a>
       <a href="about.html">About</a>
     </div>
   </nav>
 
-  <section class="project-hero">
-    <div class="eyebrow">2025 Project</div>
+<div class="detail-split">
+  <aside class="detail-info">
     <h1 class="entry" style="--d:0.05s;">Hobbi</h1>
-
-    <div class="meta-grid">
-      <div class="meta-block">
-        <h3>About</h3>
-        <p>A hobby-based social platform designed to make real-world connections feel natural again.</p>
-      </div>
-      <div class="meta-block">
-        <h3>Credit</h3>
-        <p>Agency / Nova</p>
+    <div class="detail-cols">
+      <div class="detail-side">
+        <div class="detail-year">2025</div>
+        <div class="detail-credit">
+          <p>Agency / Nova</p>
         <p>Direction / Chandlyr Jackson</p>
+        </div>
       </div>
-      <div class="meta-block">
-        <h3>Disciplines</h3>
-        <p>Brand Design</p>
-        <p>UI Design</p>
+      <div class="detail-col-main">
+        <div class="detail-disciplines">
+          <p>Brand Design</p>
+          <p>UI Design</p>
+        </div>
+        <div class="detail-about">
+          <p>Hobbi's bright and sporty visual identity translates the energy of shared activities into an approachable and socially intuitive experience.</p>
+          <p>In modern cities, meeting new people often feels transactional and superficial. Hobbi was designed to solve this problem by helping users build authentic relationships through shared hobbies like tennis and pickleball. The experience focuses on lowering social pressure and making offline connections feel more natural and approachable.</p>
+        </div>
       </div>
     </div>
-  </section>
-</div>
+    <div class="detail-nav">
+      <a href="downtime.html" class="detail-arrow detail-arrow--prev" aria-label="Previous project: Downtime">←</a>
+      <a href="casas-collective.html" class="detail-arrow detail-arrow--next" aria-label="Next project: Casas Collective">→</a>
+    </div>
+  </aside>
 
-<div class="detail-hero-img">
+  <div class="detail-media">
+  <div data-label="Intro" class="detail-hero-img">
   <img fetchpriority="high" decode="async" width="1919" height="1035" src="assets/hobbi/hobbi-detail-hero.webp" alt="Hobbi: phone showing a tennis meetup event">
 </div>
-
-<div class="wrap">
-  <section class="intro-section reveal">
-    <h2 class="intro-label">Intro</h2>
-    <div class="intro-body">
-      <p>Hobbi's bright and sporty visual identity translates the energy of shared activities into an approachable and socially intuitive experience.</p>
-      <p>In modern cities, meeting new people often feels transactional and superficial. Hobbi was designed to solve this problem by helping users build authentic relationships through shared hobbies like tennis and pickleball. The experience focuses on lowering social pressure and making offline connections feel more natural and approachable.</p>
-    </div>
-  </section>
-
   <section class="gallery reveal">
-    <div class="gallery-img">
+    <div data-label="Solution" class="gallery-img">
       <video class="lazy-video" autoplay poster="assets/hobbi/hobbi-1-poster.webp" preload="metadata" src="assets/hobbi/hobbi-1.mp4" muted loop playsinline></video>
     </div>
     <div class="gallery-img"><img loading="lazy" decode="async" width="1920" height="2160" src="assets/hobbi/hobbi-2.webp" alt="Hobbi detail image 2"></div>
     <div class="gallery-img">
       <video class="lazy-video" autoplay poster="assets/hobbi/hobbi-3-poster.webp" preload="metadata" src="assets/hobbi/hobbi-3.mp4" muted loop playsinline></video>
     </div>
-    <div class="gallery-img"><img loading="lazy" decode="async" width="1919" height="1080" src="assets/hobbi/hobbi-4.webp" alt="Hobbi detail image 4"></div>
+    <div data-label="Outcome" class="gallery-img"><img loading="lazy" decode="async" width="1919" height="1080" src="assets/hobbi/hobbi-4.webp" alt="Hobbi detail image 4"></div>
   </section>
-
-  <a href="downtime.html" class="all-projects-link">
-    <span class="arrow-back">←</span> Previous Project: Downtime
-  </a>
-
-  <a href="casas-collective.html" class="next-project">
-    <div class="next-label">Next Project</div>
-    <div class="next-title-row">
-      <div class="next-title">Casas Collective</div>
-      <div class="next-arrow">→</div>
-    </div>
-    <div class="next-desc">A hospitality brand that specializes in transforming houses into warm, experience-driven homes.</div>
-  </a>
+  </div>
+</div>
 </div>
 </main>
 

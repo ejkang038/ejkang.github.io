@@ -28,20 +28,16 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  background: rgba(237, 237, 237, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 0 0 14px 14px;
-  padding: 12px 12px 12px 22px;
-  margin-top: 0;
+  background: #fff;
+  padding: 16px 0;
 }
 .nav-left { display: flex; align-items: baseline; gap: 12px; }
 .logo { font-weight: 700; font-size: 15px; letter-spacing: -0.2px; }
 .logo sup { font-size: 10px; }
-.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 24px; grid-column: 3; }
 .navlinks { display: flex; gap: 24px; }
 .navlinks a { color: #111; text-decoration: none; font-size: 15px; font-weight: 500; }
 .navlinks a:hover { opacity: 0.6; }
@@ -49,7 +45,14 @@ nav {
   background: #111; color: #fff; font-size: 14px; font-weight: 600;
   padding: 11px 20px; border-radius: 100px; text-decoration: none; white-space: nowrap;
 }
-.nav-cta:hover { background: #333; }
+.nav-cta { display: inline-flex; justify-content: center; line-height: 1.3; overflow: hidden; }
+.nav-cta.sized { transition: background 0.2s ease, transform 0.12s ease, width 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+.nav-cta-roll { display: block; height: 1.3em; overflow: hidden; }
+.cta-stack { display: block; transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+.cta-stack > span { display: block; height: 1.3em; white-space: nowrap; }
+.nav-cta:hover .cta-stack { transform: translateY(-1.3em); }
+.cta-stack.swap { transform: translateY(-1.3em) !important; }
+.cta-stack.reset { transition: none; }
 .nav-plus-mobile {
   display: none; width: 40px; height: 40px; border-radius: 50%;
   background: #111; align-items: center; justify-content: center;
@@ -125,4 +128,74 @@ nav {
 @media (prefers-reduced-motion: reduce) {
   .reveal, .entry { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
   .navlinks a::after, .bottom-links a::after { transition: none; }
+  .cta-stack, .nav-cta.sized, .detail-arrow, .cd-pl { transition: none; }
 }
+
+/* ===== DETAIL PAGES: split layout (left info fixed, right media scrolls) ===== */
+.wrap--wide { max-width: 1440px; padding: 0 48px; }
+.detail-split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 56px; align-items: start; }
+.detail-info {
+  position: sticky; top: 72px;
+  min-height: calc(100vh - 72px); max-height: calc(100vh - 72px);
+  overflow-y: auto; scrollbar-width: none;
+  display: flex; flex-direction: column; padding: 40px 0 32px;
+}
+.detail-info::-webkit-scrollbar { display: none; }
+.detail-info h1 { font-size: clamp(48px, 6vw, 96px); font-weight: 800; letter-spacing: -3px; line-height: 0.95; margin-bottom: 56px; }
+.detail-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px; }
+.detail-year { font-size: 16px; color: #111; }
+.detail-col-main p { font-size: 16px; color: #111; }
+.detail-disciplines { margin-bottom: 48px; }
+.detail-about p { margin-bottom: 16px; max-width: 440px; }
+.detail-about p:last-child { margin-bottom: 0; }
+.detail-credit { margin-top: 28px; }
+.detail-credit p { color: rgba(17, 17, 17, 0.5); }
+.detail-nav { display: flex; gap: 32px; margin-top: auto; padding-top: 32px; }
+.detail-arrow { font-size: 32px; line-height: 1; color: #111; text-decoration: none; display: inline-block; transition: transform 0.25s ease; }
+.detail-arrow--prev:hover { transform: translateX(-8px); }
+.detail-arrow--next:hover { transform: translateX(8px); }
+.detail-media { padding: 40px 0 80px; min-width: 0; }
+.detail-media .detail-hero-img { border-radius: 10px; overflow: hidden; }
+/* one even 24px rhythm between every block in the right column */
+.detail-media > * { margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+.detail-media > * + * { margin-top: 24px !important; }
+.detail-media .gallery { gap: 24px; }
+.detail-media > .core-decision-section { margin-top: 96px !important; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Core Decision accordion */
+.cd-title { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 32px; }
+.cd-list { border-top: 1px solid #ddd; }
+.cd-list details { border-bottom: 1px solid #ddd; }
+.cd-list summary { list-style: none; display: grid; grid-template-columns: 48px 1fr 24px; gap: 24px; padding: 24px 0; cursor: pointer; align-items: baseline; }
+.cd-list summary::-webkit-details-marker { display: none; }
+.cd-n { font-size: 14px; color: rgba(17, 17, 17, 0.5); }
+.cd-t { font-size: 18px; font-weight: 700; }
+.cd-pl { font-size: 22px; text-align: right; transition: transform 0.25s ease; }
+.cd-list details[open] .cd-pl { transform: rotate(45deg); }
+.cd-list details p { padding: 0 48px 28px 72px; font-size: 15px; color: #555; max-width: 620px; }
+@media (max-width: 900px) {
+  .detail-split { grid-template-columns: 1fr; gap: 0; }
+  .detail-info { position: static; min-height: 0; max-height: none; overflow: visible; }
+  .detail-cols { grid-template-columns: 1fr; gap: 20px; }
+  .cd-title { font-size: 26px; }
+  .cd-list summary { grid-template-columns: 32px 1fr 20px; gap: 12px; }
+  .cd-list details p { padding: 0 0 24px 44px; }
+}
+@media (max-width: 640px) { .wrap--wide { padding: 0 16px; } }
+/* Detail pages: 3s hint under the pill on page entry */
+.cta-hint {
+  position: absolute; right: 0; top: calc(100% + 12px);
+  background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  color: #111; font-size: 13px; line-height: 1.4; font-weight: 600; text-align: center;
+  padding: 10px 18px; border-radius: 16px; white-space: nowrap;
+  opacity: 0; transform: translateY(-4px); transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.cta-hint::before {
+  content: ''; position: absolute; top: -6px; right: var(--arrow-right, 28px); width: 10px; height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  transform: rotate(45deg); clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.cta-hint.show { opacity: 1; transform: none; }
+.nav-right { position: relative; }
+@media (prefers-reduced-motion: reduce) { .cta-hint { transition: none; } }
