@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=20261013">
 <style>
   /* PAGE HERO */
   .project-hero { padding: 60px 0 40px; }
@@ -31,7 +31,6 @@
     font-weight: 600;
     letter-spacing: -0.75px;
     line-height: 1.15;
-    max-width: 760px;
   }
 
   /* Word-triggered image reveal */
@@ -86,9 +85,6 @@
     letter-spacing: -0.5px;
     margin-bottom: 24px;
   }
-  .intro-body {
-    max-width: 640px;
-  }
   .intro-body p {
     font-size: 16px;
     color: #555;
@@ -99,7 +95,7 @@
   /* TOOLSET */
   .toolset-section { padding: 0 0 80px; border-top: 1px solid #eee; padding-top: 80px; }
   .toolset-section .intro-label { margin-bottom: 32px; }
-  .toolset-grid { display: flex; flex-direction: column; gap: 24px; max-width: 560px; }
+  .toolset-grid { display: flex; flex-direction: column; gap: 24px; }
   .toolset-row { display: flex; gap: 24px; align-items: baseline; }
   .toolset-cat { font-size: 14px; font-weight: 600; color: #111; width: 120px; flex-shrink: 0; }
   .toolset-tags { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -118,12 +114,10 @@
     font-weight: 600;
     letter-spacing: -0.5px;
     margin-bottom: 20px;
-    max-width: 640px;
   }
   .closing-section p {
     font-size: 16px;
     color: #555;
-    max-width: 560px;
   }
 
   /* CONTACT (동일) */
@@ -148,7 +142,7 @@
 </head>
 <body>
 
-<div class="wrap">
+<div class="wrap wrap--wide">
   <nav>
     <div class="nav-left">
       <a href="index.html" style="text-decoration:none;color:inherit;"><span class="logo">EJ KANG<sup>®</sup></span></a>
@@ -182,7 +176,7 @@
   <section class="intro-section reveal">
     <h2 class="intro-label">Design With a Reason</h2>
     <div class="intro-body">
-      <p>What separates a designer from an illustrator, I believe, is intent. Visual instinct has to answer to something bigger: data, market context, and a clear point of view on what the product needs to communicate.</p>
+      <p>What separates a designer from an illustrator, I believe, is intent.<br>Visual instinct has to answer to something bigger: data, market context, and a clear point of view on what the product needs to communicate.</p>
       <p>I try to work like a strategist first and a maker second, asking what a decision needs to accomplish before I decide how it should look.</p>
     </div>
   </section>
@@ -226,13 +220,13 @@
 
   <section class="closing-section reveal">
     <h2>Growing With Intention</h2>
-    <p>I'm early in my career, and building it deliberately matters to me. I'm looking for a team that pushes my thinking further, in an environment where I can keep growing and becoming a better designer.</p>
+    <p>I'm early in my career, and building it deliberately matters to me.<br>I'm looking for a team that pushes my thinking further, in an environment where I can keep growing and becoming a better designer.</p>
   </section>
   </main>
 </div>
 
 <footer class="bottom-sheet">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <section id="contact" class="contact">
       <div class="bottom-left">
         <h2>©2026 EJ Kang</h2>
@@ -284,6 +278,6 @@
   })();
 </script>
 
-<script src="js/site.js"></script>
+<script src="js/site.js?v=20261013"></script>
 </body>
 </html>

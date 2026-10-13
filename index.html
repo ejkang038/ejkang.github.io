@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=20261013">
 <style>
   /* HERO */
   .hero {
@@ -241,7 +241,8 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 24px 32px;
-    flex: 0 0 380px;
+    flex: 1 1 0;
+    min-width: 280px;
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .bring-item:hover {
@@ -306,7 +307,7 @@
 </head>
 <body>
 
-<div class="wrap">
+<div class="wrap wrap--wide">
   <nav>
     <div class="nav-left">
       <span class="logo">EJ KANG<sup>®</sup></span>
@@ -486,7 +487,7 @@
 </div>
 
 <footer class="bottom-sheet">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <section id="contact" class="contact">
       <div class="bottom-left">
         <h2>©2026 EJ Kang</h2>
@@ -534,6 +535,6 @@
   }
 </script>
 
-<script src="js/site.js"></script>
+<script src="js/site.js?v=20261013"></script>
 </body>
 </html>
