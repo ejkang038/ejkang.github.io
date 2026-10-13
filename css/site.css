@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('../assets/fonts/inter-latin-var.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: 'Rethink Sans';
+  src: url('../assets/fonts/rethink-sans-latin-var.woff2') format('woff2');
+  font-weight: 400 800;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-2199, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -16,7 +16,7 @@
 /* BASE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Rethink Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #111;
   background: #fff;
   line-height: 1.5;
@@ -84,7 +84,7 @@ nav {
 /* about.html overrides margin-top to 40px in its own <style> */
 .bottom-sheet { background: #111; color: #fff; margin-top: 80px; }
 .contact { padding: 100px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
-.contact h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
+.contact h2 { font-size: 36px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; color: #fff; }
 .copyright-sub { font-size: 16px; color: #888; }
 .bottom-links { display: flex; flex-direction: column; gap: 12px; text-align: left; }
 .bottom-links a { color: #fff; font-weight: 500; text-decoration: none; font-size: 16px; }
@@ -135,13 +135,13 @@ nav {
 .wrap--wide { --gutter: 48px; max-width: 1440px; padding: 0 var(--gutter); }
 .detail-split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--gutter); align-items: start; }
 .detail-info {
-  position: sticky; top: 72px;
+  position: sticky; top: 72px; z-index: 5; /* keeps the floating prev/next pill above the image column */
   min-height: calc(100vh - 72px); max-height: calc(100vh - 72px);
   overflow-y: auto; scrollbar-width: none;
   display: flex; flex-direction: column; padding: 48px 0;
 }
 .detail-info::-webkit-scrollbar { display: none; }
-.detail-info h1 { font-size: clamp(48px, 6vw, 96px); font-weight: 800; letter-spacing: -3px; line-height: 0.95; margin-bottom: 48px; }
+.detail-info h1 { font-size: clamp(48px, 6vw, 96px); font-weight: 600; letter-spacing: -1.5px; line-height: 0.95; margin-bottom: 48px; }
 .detail-cols {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-template-areas: "year disc" "credit about";
@@ -157,8 +157,19 @@ nav {
 .detail-about p { margin-bottom: 16px; max-width: 440px; }
 .detail-about p:last-child { margin-bottom: 0; }
 .detail-credit p { color: rgba(17, 17, 17, 0.5); }
-.detail-nav { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--gutter); margin-top: auto; padding-top: 48px; }
-.detail-nav .detail-arrow { justify-self: start; }
+/* prev / next project: floating pill at the bottom center of the screen */
+.detail-nav {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 90;
+  display: flex; gap: 4px; padding: 6px;
+  background: rgba(17, 17, 17, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.detail-nav .detail-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 40px; border-radius: 100px; color: #fff; font-size: 20px;
+  transition: background 0.2s ease, transform 0.25s ease;
+}
+.detail-nav .detail-arrow:hover { background: rgba(255, 255, 255, 0.14); }
 .detail-arrow { font-size: 32px; line-height: 1; color: #111; text-decoration: none; display: inline-block; transition: transform 0.25s ease; }
 .detail-arrow--prev:hover { transform: translateX(-8px); }
 .detail-arrow--next:hover { transform: translateX(8px); }
@@ -173,7 +184,7 @@ nav {
 .wrap--wide .contact { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--gutter); padding: 96px 0; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 /* Core Decision accordion */
-.cd-title { font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 24px; }
+.cd-title { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 24px; }
 .cd-list { border-top: 1px solid #ddd; }
 .cd-list details { border-bottom: 1px solid #ddd; }
 .cd-list summary { list-style: none; display: grid; grid-template-columns: 48px 1fr 24px; gap: 24px; padding: 24px 0; cursor: pointer; align-items: baseline; }
@@ -192,7 +203,6 @@ nav {
   .detail-credit p::before { content: "\00B7\00A0"; }
   .detail-disciplines { display: block; margin-top: 24px; }
   .detail-about { display: block; margin-top: 48px; }
-  .detail-nav { display: flex; gap: 48px; }
   .cd-title { font-size: 26px; }
   .cd-list summary { grid-template-columns: 24px 1fr 24px; gap: 24px; }
   .cd-list details p { padding: 0 0 24px 48px; }

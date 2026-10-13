@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
 <style>
   /* HERO */
@@ -29,21 +29,32 @@
   }
   .hero-row {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
   }
   .hero h1 {
     font-size: clamp(56px, 11vw, 110px);
-    font-weight: 800;
-    letter-spacing: -3px;
+    font-weight: 700;
+    letter-spacing: 0;
     line-height: 0.95;
   }
   .hero-tagline {
-    max-width: 320px;
+    max-width: 480px;
     font-size: 14px;
     color: #444;
-    flex-shrink: 0;
+  }
+  .br-mobile { display: none; }
+
+  /* HERO: click the name to spin it once in 3D */
+  .hero-name { display: inline-block; perspective: 900px; cursor: pointer; -webkit-tap-highlight-color: transparent; border-radius: 12px; }
+  .hero-name:focus-visible { outline: 2px solid #111; outline-offset: 8px; }
+  .hero-name-inner { display: inline-block; transform-style: preserve-3d; }
+  .hero-name.spin .hero-name-inner { animation: heroSpin 1s cubic-bezier(0.65, 0, 0.35, 1); }
+  @keyframes heroSpin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-name.spin .hero-name-inner { animation: none; }
   }
 
   /* PROJECTS */
@@ -278,8 +289,8 @@
   .project .project-img img { transition: transform 0.4s ease; }
   .project .img-wrap:hover .project-img img { transform: scale(1.06); }
   @media (max-width: 640px) {
-    .hero-row { flex-direction: column; align-items: flex-start; gap: 24px; }
     .hero-tagline { max-width: 100%; }
+    .br-mobile { display: inline; }
     .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
     /* must stay after .projects-grid: same specificity, later rule wins */
     .graphic-gallery { column-count: 2; }
@@ -319,9 +330,9 @@
 
   <section class="hero">
     <div class="hero-row">
-      <h1 class="entry" style="--d:0.05s;">EJ Kang</h1>
+      <h1 class="entry" style="--d:0.05s;"><span class="hero-name" role="button" tabindex="0" aria-label="Ej Kang. Spin"><span class="hero-name-inner">Ej Kang</span></span></h1>
       <p class="hero-tagline entry" style="--d:0.15s;">
-        EJ is a UX/UI designer based in Toronto. Agency-trained in North America, she designs with users at the center and a considered visual touch.
+        Designer based in Toronto,<br class="br-mobile"> trained at a North&nbsp;American&nbsp;agency.<br>Users first, with a considered visual touch.
       </p>
     </div>
   </section>

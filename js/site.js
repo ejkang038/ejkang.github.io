@@ -200,3 +200,37 @@ var setScrollContext;
   setTimeout(function () { hint.classList.remove('show'); }, 3600);
   setTimeout(function () { hint.remove(); }, 4000);
 })();
+
+/* Homepage hero: click the name to spin it once in 3D */
+(function () {
+  var name = document.querySelector('.hero-name');
+  if (!name) return;
+  var inner = name.querySelector('.hero-name-inner');
+  function spin() {
+    name.classList.remove('spin');
+    void inner.offsetWidth;
+    name.classList.add('spin');
+  }
+  name.addEventListener('click', spin);
+  name.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); spin(); }
+  });
+  inner.addEventListener('animationend', function () { name.classList.remove('spin'); });
+})();
+
+/* Detail pages: the floating prev/next pill stops just above the footer instead of covering it */
+(function () {
+  var pill = document.querySelector('.detail-nav');
+  var footer = document.querySelector('.bottom-sheet');
+  if (!pill || !footer) return;
+  var GAP = 24, ticking = false;
+  function update() {
+    ticking = false;
+    var overlap = window.innerHeight - footer.getBoundingClientRect().top;
+    pill.style.bottom = Math.max(GAP, overlap + GAP) + 'px';
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
