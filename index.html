@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261013">
+<link rel="stylesheet" href="css/site.css?v=20261014">
 <style>
   /* HERO */
   .hero {
@@ -215,9 +215,9 @@
     margin-top: 6px;
     max-width: 560px;
   }
-  #awards {
-    padding-top: 20px;
-  }
+  /* section dividers, same as the About page */
+  #awards, #bring { border-top: 1px solid #eee; margin-top: 80px; }
+  #awards > .section-label, #bring > .section-label { margin-top: 80px; }
   .award-list {
     display: flex;
     flex-direction: column;
@@ -226,9 +226,6 @@
   .award-item {
     font-size: 15px;
     color: #333;
-  }
-  #bring {
-    padding-top: 60px;
   }
 
   /* WHAT I CAN BRING */
@@ -299,6 +296,8 @@
     .filter-tabs .tool { font-size: 12px; padding: 8px 14px; }
     .section-label { font-size: 22px; margin: 60px 0 16px; }
     .award-item { font-size: 13px; }
+    #awards, #bring { margin-top: 60px; }
+    #awards > .section-label, #bring > .section-label { margin-top: 60px; }
     .bring-item { flex: 0 0 280px; padding: 20px 24px; }
     .bring-title { font-size: 17px; }
     .bring-desc { font-size: 13px; }
@@ -331,7 +330,7 @@
 
   <section class="hero">
     <div class="hero-row">
-      <h1 class="entry" style="--d:0.05s;"><span class="hero-name" role="button" tabindex="0" aria-label="Ej Kang. Spin"><span class="hero-name-inner">Ej Kang</span></span></h1>
+      <h1 class="entry" style="--d:0.05s;"><span class="hero-name" role="button" tabindex="0" aria-label="Ej Kang. Spin"><span class="hero-name-inner" data-italic-motion data-from="700" data-delay="700" data-mode="blend" data-dur="1400" data-stagger="90" data-ease="cubic-bezier(0.33, 0, 0.2, 1)"><span aria-hidden="true"><span class="kw-l">E</span><span class="kw-l">j</span> <span class="kw-l">K</span><span class="kw-l">a</span><span class="kw-l">n</span><span class="kw-l">g</span></span></span></span></h1>
       <p class="hero-tagline entry" style="--d:0.15s;">
         Designer based in Toronto,<br class="br-mobile"> trained at a North&nbsp;American&nbsp;agency.<br>Users first, with a considered visual touch.
       </p>
@@ -535,6 +534,6 @@
   }
 </script>
 
-<script src="js/site.js?v=20261013"></script>
+<script src="js/site.js?v=20261014"></script>
 </body>
 </html>

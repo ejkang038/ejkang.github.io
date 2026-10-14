@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261013">
+<link rel="stylesheet" href="css/site.css?v=20261014">
 <style>
   /* PAGE HERO */
   .project-hero { padding: 60px 0 40px; }
@@ -32,47 +32,6 @@
     letter-spacing: -0.75px;
     line-height: 1.15;
   }
-
-  /* Word-triggered image reveal */
-  .word-trigger {
-    position: relative;
-    border-bottom: 2px dotted #999;
-    cursor: pointer;
-  }
-  .word-trigger .hover-img {
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    margin-bottom: 14px;
-    transform: translateX(-50%) translateY(8px);
-    width: 220px;
-    height: 160px;
-    border-radius: 10px;
-    background: #eee;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 500;
-    color: #999;
-    text-align: center;
-    padding: 8px;
-  }
-  .word-trigger .hover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .word-trigger:hover .hover-img,
-  .word-trigger.active .hover-img {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-  }
-
-  /* Mobile-only reveal panel (below the paragraph, avoids edge clipping) */
-  .mobile-word-panel { display: none; }
 
   /* PHILOSOPHY (stacked: title above body) */
   .intro-section {
@@ -124,11 +83,6 @@
   .bottom-sheet { background: #111; color: #fff; margin-top: 40px; }
   @media (max-width: 640px) {
     .project-hero h1 { font-size: 32px; letter-spacing: -0.5px; line-height: 1.2; }
-    .word-trigger .hover-img { display: none; }
-    .mobile-word-panel { display: block; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, margin-top 0.35s ease; margin-top: 0; }
-    .mobile-word-panel.open { max-height: 220px; margin-top: 20px; }
-    .mobile-word-panel-inner { width: 100%; height: 200px; border-radius: 10px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #999; text-align: center; overflow: hidden; }
-    .mobile-word-panel-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .intro-section { padding: 60px 0; }
     .intro-label { font-size: 24px; }
     .toolset-section { padding-top: 60px; padding-bottom: 60px; }
@@ -138,6 +92,7 @@
     .closing-section { padding: 60px 0; }
     .closing-section h2 { font-size: 24px; }
   }
+
 </style>
 </head>
 <body>
@@ -166,11 +121,7 @@
 
   <section class="project-hero">
     <div class="eyebrow">About</div>
-    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="word-trigger" data-word="strategist">strategist<span class="hover-img"><img loading="lazy" decode="async" width="1920" height="1280" src="assets/about/strategist-placeholder.webp" alt="Strategist"></span></span>, balancing the functional discipline of UX with an eye for <span class="word-trigger" data-word="visual-craft">visual craft<span class="hover-img"><img loading="lazy" decode="async" width="1080" height="1080" src="assets/about/visual-craft-placeholder.webp" alt="Visual craft"></span></span>. I believe neither one works without the other.</h1>
-
-    <div class="mobile-word-panel" id="mobileWordPanel">
-      <div class="mobile-word-panel-inner" id="mobileWordPanelInner"></div>
-    </div>
+    <h1 class="entry" style="--d:0.05s;">I'm a product designer who thinks like a <span class="kw" data-italic-motion data-mode="weight" aria-label="strategist"><span aria-hidden="true"><span class="kw-l">s</span><span class="kw-l">t</span><span class="kw-l">r</span><span class="kw-l">a</span><span class="kw-l">t</span><span class="kw-l">e</span><span class="kw-l">g</span><span class="kw-l">i</span><span class="kw-l">s</span><span class="kw-l">t</span></span></span>, balancing the functional discipline of UX with an eye for <span class="kw" data-italic-motion data-mode="weight" aria-label="visual craft"><span aria-hidden="true"><span class="kw-l">v</span><span class="kw-l">i</span><span class="kw-l">s</span><span class="kw-l">u</span><span class="kw-l">a</span><span class="kw-l">l</span> <span class="kw-l">c</span><span class="kw-l">r</span><span class="kw-l">a</span><span class="kw-l">f</span><span class="kw-l">t</span></span></span>. I believe neither one works without the other.</h1>
   </section>
 
   <section class="intro-section reveal">
@@ -241,43 +192,6 @@
   </div>
 </footer>
 
-<script>
-  (function(){
-    // Word-triggered image reveal (desktop: floating bubble via hover/tap; mobile: panel below text)
-    var triggers = document.querySelectorAll('.word-trigger');
-    var mobileMql = window.matchMedia('(max-width: 640px)');
-    var panel = document.getElementById('mobileWordPanel');
-    var panelInner = document.getElementById('mobileWordPanelInner');
-    var panelImages = { strategist: 'assets/about/strategist-placeholder.webp', 'visual-craft': 'assets/about/visual-craft-placeholder.webp' };
-    triggers.forEach(function(t){
-      t.addEventListener('click', function(e){
-        var key = t.dataset.word;
-        if (window.umami) umami.track('word-trigger', { word: key });
-        if (mobileMql.matches) {
-          var isOpenSame = panel.classList.contains('open') && panel.dataset.current === key;
-          if (isOpenSame) {
-            panel.classList.remove('open');
-            panel.dataset.current = '';
-          } else {
-            panelInner.innerHTML = '<img src="' + panelImages[key] + '" alt="' + key + '" style="width:100%;height:100%;object-fit:cover;display:block;">';
-            panel.classList.add('open');
-            panel.dataset.current = key;
-          }
-          return;
-        }
-        var wasActive = t.classList.contains('active');
-        triggers.forEach(function(x){ x.classList.remove('active'); });
-        if (!wasActive) { t.classList.add('active'); }
-      });
-    });
-    document.addEventListener('click', function(e){
-      if (!e.target.closest('.word-trigger')) {
-        triggers.forEach(function(x){ x.classList.remove('active'); });
-      }
-    });
-  })();
-</script>
-
-<script src="js/site.js?v=20261013"></script>
+<script src="js/site.js?v=20261014"></script>
 </body>
 </html>

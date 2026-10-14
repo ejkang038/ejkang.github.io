@@ -216,6 +216,8 @@ var setScrollContext;
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); spin(); }
   });
   inner.addEventListener('animationend', function () { name.classList.remove('spin'); });
+  // spin once on its own right after the italic motion finishes
+  name.addEventListener('italicdone', function () { setTimeout(spin, 150); });
 })();
 
 /* Detail pages: the floating prev/next pill stops just above the footer instead of covering it */
@@ -233,4 +235,43 @@ var setScrollContext;
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   update();
+})();
+
+/* Italic motion: [data-italic-motion] groups turn italic bold letter by letter.
+   Groups on a page play in order, each starting `gap` ms after the previous one.
+   Per-group overrides: data-from, data-delay, data-dur, data-stagger, data-ease, data-lift,
+   data-mode="blend" (weight and slant ease in together, the true italic takes over at the end),
+   data-mode="weight" (bold only, no italic). */
+(function () {
+  var groups = document.querySelectorAll('[data-italic-motion]');
+  if (!groups.length || !('animate' in Element.prototype)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var T = { dur: 400, stagger: 40, delay: 300, gap: 650, from: 600, to: 800, lift: 4, ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)' };
+  function opt(el, key) { var v = el.getAttribute('data-' + key); return v === null ? T[key] : (isNaN(v) ? v : +v); }
+  groups.forEach(function (group, g) {
+    var from = opt(group, 'from'), lift = opt(group, 'lift');
+    var mode = group.getAttribute('data-mode');
+    var frames = mode === 'weight' ? [
+      { offset: 0,   fontWeight: from, transform: 'translateY(0)' },
+      { offset: 0.5, transform: 'translateY(' + (-lift) + 'px)' },
+      { offset: 1,   fontWeight: T.to, transform: 'translateY(0)' }
+    ] : mode === 'blend' ? [
+      { offset: 0,    fontWeight: from, fontStyle: 'normal', transform: 'skewX(0deg)' },
+      { offset: 0.94, fontWeight: T.to, fontStyle: 'normal', transform: 'skewX(-10deg)' },
+      { offset: 0.95, fontWeight: T.to, fontStyle: 'italic', transform: 'skewX(0deg)' },
+      { offset: 1,    fontWeight: T.to, fontStyle: 'italic', transform: 'skewX(0deg)' }
+    ] : [
+      { offset: 0,   fontWeight: from, fontStyle: 'normal', transform: 'translateY(0)' },
+      { offset: 0.5, fontStyle: 'italic', transform: 'translateY(' + (-lift) + 'px)' },
+      { offset: 1,   fontWeight: T.to, fontStyle: 'italic', transform: 'translateY(0)' }
+    ];
+    var start = opt(group, 'delay') + g * T.gap, dur = opt(group, 'dur'), stagger = opt(group, 'stagger'), ease = opt(group, 'ease');
+    var last;
+    group.querySelectorAll('.kw-l').forEach(function (letter, i) {
+      last = letter.animate(frames, { duration: dur, delay: start + i * stagger, easing: ease, fill: 'both' });
+    });
+    if (last) last.finished.then(function () {
+      group.dispatchEvent(new CustomEvent('italicdone', { bubbles: true }));
+    });
+  });
 })();
