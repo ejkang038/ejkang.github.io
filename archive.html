@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Umami -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="9243c5bb-2964-4103-bc8a-e9dfcaadfc21"></script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon-180.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive | EJ Kang</title>
+<meta name="description" content="Graphic and illustration work by EJ Kang, a Toronto-based UX/UI designer.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EJ Kang">
+<meta property="og:title" content="Archive | EJ Kang">
+<meta property="og:description" content="Graphic and illustration work by EJ Kang, a Toronto-based UX/UI designer.">
+<meta property="og:url" content="https://ej-kang.com/archive.html">
+<meta property="og:image" content="https://ej-kang.com/assets/og/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css?v=20261014c">
+<style>
+  /* Headings match "Selected Projects" on the homepage */
+  .section-label { font-size: 28px; font-weight: 700; margin: 80px 0 24px; }
+
+  /* YEAR BY YEAR: same accordion as Core Decision, the year sits in the number column */
+  .timeline .cd-list summary { grid-template-columns: 64px 1fr 24px; }
+  .timeline .cd-list details ul { list-style: none; padding: 0 48px 24px 88px; }
+  .timeline .cd-list details li { font-size: 15px; color: #555; padding: 2px 0; }
+  .timeline .cd-list details li b { color: #111; font-weight: 600; }
+  /* year entries with a thumbnail on the left */
+  .yr-items { display: flex; flex-direction: column; gap: 16px; padding: 0 48px 24px 88px; }
+  .yr-item { display: flex; align-items: center; gap: 24px; color: inherit; text-decoration: none; }
+  .yr-item img { width: 160px; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: #eee; transition: transform 0.3s ease; }
+  .yr-item span { display: flex; flex-direction: column; gap: 2px; font-size: 15px; color: #555; }
+  .yr-item b { color: #111; font-weight: 600; font-size: 16px; }
+  a.yr-item:hover img { transform: scale(1.03); }
+  #gallery { border-top: 1px solid #eee; margin-top: 80px; }
+
+  /* GALLERY (moved from the homepage Graphic tab) */
+  .graphic-gallery {
+    display: block;
+    column-count: 5;
+    column-gap: 12px;
+  }
+  .graphic-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+    break-inside: avoid;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient(100deg, rgba(0,0,0,0) 32%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0) 68%);
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    animation: gallerySkeleton 1.4s ease-in-out infinite;
+  }
+  .graphic-gallery img.loaded {
+    background: none;
+    animation: galleryFadeIn 0.45s ease;
+  }
+  @keyframes gallerySkeleton {
+    from { background-position: 170% 0; }
+    to   { background-position: -70% 0; }
+  }
+  @keyframes galleryFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .graphic-gallery img,
+    .graphic-gallery img.loaded { animation: none; }
+  }
+  .bottom-sheet { background: #111; color: #fff; margin-top: 96px; }
+  @media (max-width: 640px) {
+    .section-label { font-size: 22px; margin: 60px 0 16px; }
+    #gallery { margin-top: 60px; }
+    .timeline .cd-list summary { grid-template-columns: 44px 1fr 20px; gap: 12px; }
+    .timeline .cd-list details ul { padding: 0 0 20px 56px; }
+    .yr-items { padding: 0 0 20px 56px; gap: 12px; }
+    .yr-item { gap: 12px; }
+    .yr-item img { width: 96px; }
+    .graphic-gallery { column-count: 3; column-gap: 8px; }
+    .graphic-gallery img { margin-bottom: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap wrap--wide">
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;color:inherit;"><span class="logo">EJ KANG<sup>®</sup></span></a>
+    </div>
+    <div class="navlinks">
+        <a href="index.html#projects">Projects</a>
+        <a href="archive.html">Archive</a>
+        <a href="about.html">About</a>
+      </div>
+    <div class="nav-right">
+      <a href="index.html#contact" class="nav-cta"><span class="nav-cta-roll"><span class="cta-stack"><span>Open to Work</span><span>Open to Work</span></span></span></a>
+      <button type="button" class="nav-plus-mobile" id="navMobileToggle" aria-expanded="false" aria-label="Open menu" onclick="toggleMobileNav()">+</button>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="index.html#projects">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+  <main>
+
+  <h1 class="section-label entry" style="--d:0.05s;">Archive</h1>
+
+  <section class="timeline" aria-label="Year by year">
+    <div class="cd-list">
+      <details open>
+        <summary><span class="cd-n">2026</span><span class="cd-t">Casas Collective, Hackathon</span><span class="cd-pl" aria-hidden="true">+</span></summary>
+        <div class="yr-items">
+          <a class="yr-item" href="casas-collective.html">
+            <img loading="lazy" decoding="async" width="1920" height="1080" src="assets/casas/casas-thumb.webp" alt="Casas Collective website on a laptop">
+            <span><b>Casas Collective</b>Freelance, Client Project</span>
+          </a>
+          <div class="yr-item">
+            <img loading="lazy" decoding="async" width="640" height="427" src="assets/archive/hackathon-thumb.webp" alt="EJ Kang presenting at the Shinhan Bank Hackathon">
+            <span><b>Shinhan Bank Hackathon</b>Innovation Award</span>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary><span class="cd-n">2025</span><span class="cd-t">KIDP Global Internship</span><span class="cd-pl" aria-hidden="true">+</span></summary>
+        <div class="yr-items">
+          <a class="yr-item" href="hobbi.html">
+            <img loading="lazy" decoding="async" width="1920" height="1080" src="assets/hobbi/hobbi-hero.webp" alt="Hobbi app on two phones">
+            <span><b>UX/UI Design Intern</b>Design Agency Nova, Hobbi</span>
+          </a>
+        </div>
+      </details>
+      <details>
+        <summary><span class="cd-n">2021</span><span class="cd-t">Illustration exhibition</span><span class="cd-pl" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><b>Illustration Exhibition</b> · Supported by Jungnang District, Seoul</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2 class="section-label">Graphic Work</h2>
+    <div class="graphic-gallery" aria-label="Graphic work">
+      <img loading="lazy" decode="async" width="1000" height="1415" src="assets/graphic/graphic-1.webp" alt="Graphic work 1">
+      <img loading="lazy" decode="async" width="1000" height="1540" src="assets/graphic/graphic-2.webp" alt="Graphic work 2">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-3.webp" alt="Graphic work 3">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-4.webp" alt="Graphic work 4">
+      <img loading="lazy" decode="async" width="621" height="878" src="assets/graphic/graphic-5.webp" alt="Graphic work 5">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-6.webp" alt="Graphic work 6">
+      <img loading="lazy" decode="async" width="1000" height="1143" src="assets/graphic/graphic-7.webp" alt="Graphic work 7">
+      <img loading="lazy" decode="async" width="525" height="525" src="assets/graphic/graphic-8.webp" alt="Graphic work 8">
+      <img loading="lazy" decode="async" width="525" height="525" src="assets/graphic/graphic-9.webp" alt="Graphic work 9">
+      <img loading="lazy" decode="async" width="834" height="1194" src="assets/graphic/graphic-10.webp" alt="Graphic work 10">
+      <img loading="lazy" decode="async" width="1000" height="1328" src="assets/graphic/graphic-11.webp" alt="Graphic work 11">
+      <img loading="lazy" decode="async" width="1000" height="1327" src="assets/graphic/graphic-12.webp" alt="Graphic work 12">
+      <img loading="lazy" decode="async" width="1000" height="1416" src="assets/graphic/graphic-13.webp" alt="Graphic work 13">
+      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-14.webp" alt="Graphic work 14">
+      <img loading="lazy" decode="async" width="1000" height="1414" src="assets/graphic/graphic-15.webp" alt="Graphic work 15">
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer class="bottom-sheet">
+  <div class="wrap wrap--wide">
+    <section id="contact" class="contact">
+      <div class="bottom-left">
+        <h2>©2026 EJ Kang</h2>
+        <p class="copyright-sub">All Copyright reserved</p>
+      </div>
+      <div class="bottom-links">
+        <a href="mailto:ejkang038@gmail.com" data-umami-event="external-link" data-umami-event-link="email">ejkang038@gmail.com</a>
+        <a href="https://docs.google.com/document/d/1tygZGHCwR9sJoc2kIixEkGQdjlFJI0BtpjXjynefcQQ/edit?usp=sharing" target="_blank" rel="noopener" data-umami-event="resume-click">Resume</a>
+        <a href="https://www.linkedin.com/in/ejkang085333" target="_blank" rel="noopener" data-umami-event="external-link" data-umami-event-link="linkedin">Linkedin</a>
+      </div>
+    </section>
+  </div>
+</footer>
+
+<script src="js/site.js?v=20261014c"></script>
+</body>
+</html>

@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261014b">
+<link rel="stylesheet" href="css/site.css?v=20261014c">
 <style>
   /* HERO */
   .hero {
@@ -72,26 +72,6 @@
   .section-header .section-label {
     margin: 0;
   }
-  .filter-tabs {
-    display: flex;
-    gap: 8px;
-  }
-  .filter-tabs .tool {
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid #111;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 11px 20px;
-    border-radius: 100px;
-    background: transparent;
-    color: #111;
-  }
-  .filter-tabs .tool.active {
-    background: rgba(0, 0, 0, 0.1);
-    color: #111;
-    border-color: #111;
-  }
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -100,40 +80,6 @@
   }
   .project {
     margin-bottom: 60px;
-  }
-  .graphic-gallery {
-    display: block;
-    column-count: 3;
-    column-gap: 16px;
-  }
-  .graphic-gallery img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 16px;
-    break-inside: avoid;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.05);
-    background-image: linear-gradient(100deg, rgba(0,0,0,0) 32%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0) 68%);
-    background-size: 220% 100%;
-    background-repeat: no-repeat;
-    animation: gallerySkeleton 1.4s ease-in-out infinite;
-  }
-  .graphic-gallery img.loaded {
-    background: none;
-    animation: galleryFadeIn 0.45s ease;
-  }
-  @keyframes gallerySkeleton {
-    from { background-position: 170% 0; }
-    to   { background-position: -70% 0; }
-  }
-  @keyframes galleryFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .graphic-gallery img,
-    .graphic-gallery img.loaded { animation: none; }
   }
   .project-img {
     width: 100%;
@@ -290,10 +236,7 @@
     .hero-tagline { max-width: 100%; }
     .br-mobile { display: inline; }
     .projects-grid { grid-template-columns: 1fr; row-gap: 24px; }
-    /* must stay after .projects-grid: same specificity, later rule wins */
-    .graphic-gallery { column-count: 2; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; margin: 60px 0 16px; }
-    .filter-tabs .tool { font-size: 12px; padding: 8px 14px; }
     .section-label { font-size: 22px; margin: 60px 0 16px; }
     .award-item { font-size: 13px; }
     #awards, #bring { margin-top: 60px; }
@@ -313,7 +256,7 @@
     </div>
     <div class="navlinks">
         <a href="#projects">Projects</a>
-        <a href="#">Archive</a>
+        <a href="archive.html">Archive</a>
         <a href="about.html">About</a>
       </div>
     <div class="nav-right">
@@ -322,7 +265,7 @@
     </div>
     <div class="nav-mobile-menu" id="navMobileMenu">
       <a href="#projects">Projects</a>
-      <a href="#">Archive</a>
+      <a href="archive.html">Archive</a>
       <a href="about.html">About</a>
     </div>
   </nav>
@@ -330,7 +273,7 @@
 
   <section class="hero">
     <div class="hero-row">
-      <h1 class="entry" style="--d:0.05s;"><span class="hero-name" role="button" tabindex="0" aria-label="Ej Kang. Spin"><span class="hero-name-inner">Ej Kang</span></span></span></h1>
+      <h1 class="entry" style="--d:0.05s;"><span class="hero-name" role="button" tabindex="0" aria-label="Ej Kang. Spin"><span class="hero-name-inner">Ej Kang</span></span></h1>
       <p class="hero-tagline entry" style="--d:0.15s;">
         Designer based in Toronto,<br class="br-mobile"> trained at a North&nbsp;American&nbsp;agency.<br>Users first, with a considered visual touch.
       </p>
@@ -340,10 +283,6 @@
   <section id="projects">
     <div class="section-header">
       <h2 class="section-label">Selected Projects</h2>
-      <div class="filter-tabs">
-        <span class="tool active" data-tab="product">Product/UX/UI</span>
-        <span class="tool" data-tab="graphic">Graphic</span>
-      </div>
     </div>
 
     <div class="projects-grid" id="grid-product">
@@ -434,24 +373,6 @@
       </div>
     </div>
     </div>
-
-    <div class="projects-grid graphic-gallery" id="grid-graphic" style="display:none;">
-      <img loading="lazy" decode="async" width="1000" height="1415" src="assets/graphic/graphic-1.webp" alt="Graphic work 1">
-      <img loading="lazy" decode="async" width="1000" height="1540" src="assets/graphic/graphic-2.webp" alt="Graphic work 2">
-      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-3.webp" alt="Graphic work 3">
-      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-4.webp" alt="Graphic work 4">
-      <img loading="lazy" decode="async" width="621" height="878" src="assets/graphic/graphic-5.webp" alt="Graphic work 5">
-      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-6.webp" alt="Graphic work 6">
-      <img loading="lazy" decode="async" width="1000" height="1143" src="assets/graphic/graphic-7.webp" alt="Graphic work 7">
-      <img loading="lazy" decode="async" width="525" height="525" src="assets/graphic/graphic-8.webp" alt="Graphic work 8">
-      <img loading="lazy" decode="async" width="525" height="525" src="assets/graphic/graphic-9.webp" alt="Graphic work 9">
-      <img loading="lazy" decode="async" width="834" height="1194" src="assets/graphic/graphic-10.webp" alt="Graphic work 10">
-      <img loading="lazy" decode="async" width="1000" height="1328" src="assets/graphic/graphic-11.webp" alt="Graphic work 11">
-      <img loading="lazy" decode="async" width="1000" height="1327" src="assets/graphic/graphic-12.webp" alt="Graphic work 12">
-      <img loading="lazy" decode="async" width="1000" height="1416" src="assets/graphic/graphic-13.webp" alt="Graphic work 13">
-      <img loading="lazy" decode="async" width="1000" height="1000" src="assets/graphic/graphic-14.webp" alt="Graphic work 14">
-      <img loading="lazy" decode="async" width="1000" height="1414" src="assets/graphic/graphic-15.webp" alt="Graphic work 15">
-    </div>
   </section>
 
   <section id="awards">
@@ -502,23 +423,6 @@
 </footer>
 
 <script>
-  const filterTabs = document.querySelectorAll('.filter-tabs .tool');
-  const filterGrids = {
-    product: document.getElementById('grid-product'),
-    graphic: document.getElementById('grid-graphic')
-  };
-  const filterDisplay = { product: 'grid', graphic: 'block' };
-  filterTabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      filterTabs.forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      Object.keys(filterGrids).forEach(function(key) {
-        filterGrids[key].style.display = (key === tab.dataset.tab) ? filterDisplay[key] : 'none';
-      });
-      if (window.setScrollContext) setScrollContext('home-' + tab.dataset.tab);
-    });
-  });
-
   // Carry card shakes on click (no detail page yet)
   var carryShake = document.getElementById('carry-shake');
   if (carryShake) {
@@ -534,6 +438,6 @@
   }
 </script>
 
-<script src="js/site.js?v=20261014b"></script>
+<script src="js/site.js?v=20261014c"></script>
 </body>
 </html>
