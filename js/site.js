@@ -48,6 +48,11 @@ document.addEventListener('click', function(e){
 /* Video playback: autoplay handles startup, this only pauses off-screen clips */
 (function(){
   var vids = document.querySelectorAll('video.lazy-video');
+  // reduced motion: no autoplay, but controls so the visitor can still choose to watch
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    vids.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+    return;
+  }
   if (!vids.length || !('IntersectionObserver' in window)) return;
   var obs = new IntersectionObserver(function(items){
     items.forEach(function(e){

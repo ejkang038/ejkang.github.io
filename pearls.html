@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js')</script>
 <!-- Umami -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="9243c5bb-2964-4103-bc8a-e9dfcaadfc21"></script>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -21,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261014c">
+<link rel="stylesheet" href="css/site.css?v=20261020">
 <style>
 
   /* HERO IMAGE (full-bleed, 원본 비율 유지) */
@@ -106,12 +107,12 @@
 
   <div class="detail-media">
   <div data-label="Intro" class="detail-hero-img">
-  <img fetchpriority="high" decode="async" width="3840" height="2160" src="assets/pearls/pearls-detail-hero.webp" alt="Pearls app screen: Pearls Talk consistency score and symptom tracking over a photo of a woman smiling">
+  <img fetchpriority="high" decoding="async" width="3840" height="2160" src="assets/pearls/pearls-detail-hero.webp" alt="Pearls app screen: Pearls Talk consistency score and symptom tracking over a photo of a woman smiling">
 </div>
   <h2 class="visually-hidden">UX Strategy</h2>
   <section class="gallery reveal">
-    <div data-label="Strategy" class="gallery-img"><img loading="lazy" decode="async" width="1920" height="1298" src="assets/pearls/pearls-1.webp" alt="Positioning map 01"></div>
-    <div class="gallery-img"><img loading="lazy" decode="async" width="1920" height="1298" src="assets/pearls/pearls-2.webp" alt="Business model 02"></div>
+    <div data-label="Strategy" class="gallery-img"><img loading="lazy" decoding="async" width="1920" height="1298" src="assets/pearls/pearls-1.webp" alt="Positioning map 01"></div>
+    <div class="gallery-img"><img loading="lazy" decoding="async" width="1920" height="1298" src="assets/pearls/pearls-2.webp" alt="Business model 02"></div>
   </section>
 
   <section class="gallery reveal">
@@ -119,10 +120,10 @@
   </section>
 
   <section class="gallery reveal">
-    <div class="gallery-img"><img loading="lazy" decode="async" width="1920" height="2200" src="assets/pearls/pearls-4.webp" alt="Pearls detail image 4"></div>
-    <div class="gallery-img"><img loading="lazy" decode="async" width="1920" height="1080" src="assets/pearls/pearls-5.webp" alt="Pearls detail image 5"></div>
+    <div class="gallery-img"><img loading="lazy" decoding="async" width="1920" height="2200" src="assets/pearls/pearls-4.webp" alt="Pearls detail image 4"></div>
+    <div class="gallery-img"><img loading="lazy" decoding="async" width="1920" height="1080" src="assets/pearls/pearls-5.webp" alt="Pearls detail image 5"></div>
     <div class="gallery-img"><video class="lazy-video" autoplay poster="assets/pearls/pearls-demo-poster.webp" preload="metadata" src="assets/pearls/pearls-demo.mp4" muted loop playsinline></video></div>
-    <div data-label="Outcome" class="gallery-img"><img loading="lazy" decode="async" width="1920" height="1335" src="assets/pearls/pearls-6.webp" alt="Pearls detail image 6"></div>
+    <div data-label="Outcome" class="gallery-img"><img loading="lazy" decoding="async" width="1920" height="1335" src="assets/pearls/pearls-6.webp" alt="Pearls detail image 6"></div>
   </section>
   <section class="core-decision-section" data-label="Core Decision">
     <h2 class="cd-title">Core Decision</h2>
@@ -177,11 +178,11 @@
     container: document.getElementById('pearls-lottie'),
     renderer: 'svg',
     loop: true,
-    autoplay: true,
+    autoplay: !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     path: 'assets/pearls/pearls-anim.json'
   });
 </script>
 
-<script src="js/site.js?v=20261014c"></script>
+<script src="js/site.js?v=20261020"></script>
 </body>
 </html>
