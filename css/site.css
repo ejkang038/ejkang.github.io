@@ -124,8 +124,10 @@ nav {
 /* Scroll reveal: hidden start only when JS is on (the <head> adds .js), so JS-off visitors see everything.
    shortcut: if site.js itself fails to load, .entry/.reveal stay hidden; same-origin file, so accepted
    Moves with `translate`, not `transform`, so it never fights an element's own transform (.detail-nav centering, card hover).
-   --reveal-dur is read by js/site.js too; keep it in seconds. */
-:root { --reveal-dur: 1.4s; --reveal-dist: 24px; --reveal-dist-media: 12px; --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+   js/site.js reads each element's computed transition-duration, so per-element --reveal-dur overrides just work. */
+:root { --reveal-dur: 1.4s; --reveal-dur-gallery: calc(var(--reveal-dur) * 1.4); --reveal-dist: 24px; --reveal-dist-media: 12px; --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+/* archive Graphic Work images reveal slower than everything else */
+.graphic-gallery img { --reveal-dur: var(--reveal-dur-gallery); }
 /* photos and videos rise half as far as text */
 .detail-hero-img, .gallery-img, .hscroll-item, .graphic-gallery img { --reveal-dist: var(--reveal-dist-media); }
 /* desktop detail hero is the LCP image and always on the first screen: never hidden, not even before JS runs */

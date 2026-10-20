@@ -28,7 +28,6 @@
     // items arriving together play top to bottom (left to right on one row), 120ms apart, up to 8 in sequence
     // except masonry gallery images: those within ROW px of the same height share one step, so a row never sweeps sideways
     var STAGGER = 120, MAX_STEPS = 7, ROW = 24;
-    var DUR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-dur')) * 1000;
     var obs = new IntersectionObserver(function(items){
       var step = -1, rowTop = null;
       items.filter(function(e){ return e.isIntersecting; }).sort(function(a, b){
@@ -43,7 +42,8 @@
         el.style.transitionDelay = delay + 'ms';
         el.classList.add('in');
         // once shown, drop the reveal styles so the element's own transitions (e.g. card hover) apply again
-        setTimeout(function(){ el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, delay + DUR);
+        var dur = parseFloat(getComputedStyle(el).transitionDuration) * 1000; // per element: the gallery runs longer
+        setTimeout(function(){ el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, delay + dur);
       });
     }, { rootMargin: '0px 0px 60px 0px' });
     reveals.forEach(function(el){ obs.observe(el); });
