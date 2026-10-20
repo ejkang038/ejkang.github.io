@@ -14,11 +14,38 @@
   } else {
     entries.forEach(function(el){ el.classList.add('play'); });
   }
-  var reveals = document.querySelectorAll('.reveal');
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if (!mql.matches && 'IntersectionObserver' in window) {
+    // desktop detail pages: right-column items already above the 85% line on load show at once,
+    // so the page opens with only the left text animating (900px and below keeps the scroll reveal)
+    if (window.matchMedia('(min-width: 901px)').matches) {
+      var line = window.innerHeight * 0.85;
+      reveals = reveals.filter(function(el){
+        if (el.closest('.detail-media') && el.getBoundingClientRect().top < line) { el.classList.remove('reveal'); return false; }
+        return true;
+      });
+    }
+    // items arriving together play top to bottom (left to right on one row), 120ms apart, up to 8 in sequence
+    // except masonry gallery images: those within ROW px of the same height share one step, so a row never sweeps sideways
+    var STAGGER = 120, MAX_STEPS = 7, ROW = 24;
+    var DUR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-dur')) * 1000;
     var obs = new IntersectionObserver(function(items){
-      items.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.15 });
+      var step = -1, rowTop = null;
+      items.filter(function(e){ return e.isIntersecting; }).sort(function(a, b){
+        return (a.boundingClientRect.top - b.boundingClientRect.top) || (a.boundingClientRect.left - b.boundingClientRect.left);
+      }).forEach(function(e){
+        var el = e.target, top = e.boundingClientRect.top;
+        var inGallery = el.matches('.graphic-gallery img');
+        if (inGallery && rowTop !== null && top - rowTop < ROW) { /* same row: keep step */ }
+        else { step++; rowTop = inGallery ? top : null; }
+        var delay = Math.min(step, MAX_STEPS) * STAGGER;
+        obs.unobserve(el);
+        el.style.transitionDelay = delay + 'ms';
+        el.classList.add('in');
+        // once shown, drop the reveal styles so the element's own transitions (e.g. card hover) apply again
+        setTimeout(function(){ el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, delay + DUR);
+      });
+    }, { rootMargin: '0px 0px 60px 0px' });
     reveals.forEach(function(el){ obs.observe(el); });
   } else {
     reveals.forEach(function(el){ el.classList.add('in'); });

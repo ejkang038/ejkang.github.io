@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261020">
+<link rel="stylesheet" href="css/site.css?v=20261020f">
 <style>
   /* HERO */
   .hero {
@@ -180,6 +180,7 @@
     display: flex;
     gap: 24px;
     overflow-x: auto;
+    overflow-y: hidden; /* clip the reveal slide instead of flashing a vertical scrollbar */
   }
   .bring-item {
     border: 1px solid #ddd;
@@ -379,8 +380,8 @@
   <section id="awards">
     <h2 class="section-label reveal">Awards & Recognition</h2>
     <div class="award-list">
-      <div class="award-item">2026 · Shinhan Bank Hackathon, Innovation Award</div>
-      <div class="award-item">2021 · illustration Exhibition, Supported by Jungnang District, Seoul</div>
+      <div class="award-item reveal">2026 · Shinhan Bank Hackathon, Innovation Award</div>
+      <div class="award-item reveal">2021 · illustration Exhibition, Supported by Jungnang District, Seoul</div>
     </div>
   </section>
 
@@ -388,17 +389,17 @@
     <h2 class="section-label reveal">What I can bring to the team</h2>
 
     <div class="bring-scroll">
-    <div class="bring-item">
+    <div class="bring-item reveal">
       <div class="bring-title">A Product's Eye View, Not Just a User's</div>
       <p class="bring-desc">A hackathon pushed me to think beyond solving the user's problem to ask how a service sustains itself for everyone involved.</p>
     </div>
 
-    <div class="bring-item">
+    <div class="bring-item reveal">
       <div class="bring-title">A Love for Visuals</div>
       <p class="bring-desc">I'm drawn to visual craft in illustration, beauty, and fashion. As a designer, I want my work to be visually compelling too, not only functional.</p>
     </div>
 
-    <div class="bring-item">
+    <div class="bring-item reveal">
       <div class="bring-title">Unafraid of Starting Over</div>
       <p class="bring-desc">I applied for and completed an overseas internship, then moved to Canada to build a design career in North America. New environments don't scare me. They're always a challenge worth taking.</p>
     </div>
@@ -440,6 +441,6 @@
   }
 </script>
 
-<script src="js/site.js?v=20261020"></script>
+<script src="js/site.js?v=20261020f"></script>
 </body>
 </html>

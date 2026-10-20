@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261020">
+<link rel="stylesheet" href="css/site.css?v=20261020f">
 <style>
 
   /* HERO IMAGE (full-bleed, 원본 비율 유지) */
@@ -49,6 +49,7 @@
     display: flex;
     gap: 24px;
     overflow-x: auto;
+    overflow-y: hidden; /* clip the reveal slide instead of flashing a vertical scrollbar */
     scroll-snap-type: x mandatory;
     padding-bottom: 16px;
     margin-bottom: 40px;
@@ -97,69 +98,69 @@
 
 <div class="detail-split">
   <aside class="detail-info">
-    <h1 class="entry" style="--d:0.05s;">Downtime</h1>
+    <h1 class="reveal">Downtime</h1>
     <div class="detail-cols">
       <div class="detail-side">
-        <div class="detail-year">2025</div>
-        <div class="detail-credit">
+        <div class="detail-year reveal">2025</div>
+        <div class="detail-credit reveal">
           <p>Case Study</p>
           <p>Solo Project</p>
         </div>
       </div>
       <div class="detail-col-main">
-        <div class="detail-disciplines">
+        <div class="detail-disciplines reveal">
           <p>UX Design</p>
           <p>UI Design</p>
         </div>
         <div class="detail-about">
-          <p>Have you ever broken your phone and had to wait for it to be repaired? This case study is based on my own experience of that waiting time, with nothing to do.</p>
-          <p>I believe a brand like Apple should feel that gap too.</p>
+          <p class="reveal">Have you ever broken your phone and had to wait for it to be repaired? This case study is based on my own experience of that waiting time, with nothing to do.</p>
+          <p class="reveal">I believe a brand like Apple should feel that gap too.</p>
         </div>
       </div>
     </div>
-    <div class="detail-nav">
+    <div class="detail-nav reveal">
       <a href="pearls.html" class="detail-arrow detail-arrow--prev" aria-label="Previous project: Pearls">←</a>
       <a href="hobbi.html" class="detail-arrow detail-arrow--next" aria-label="Next project: Hobbi">→</a>
     </div>
   </aside>
 
   <div class="detail-media">
-  <div data-label="Intro" class="detail-hero-img">
+  <div data-label="Intro" class="detail-hero-img reveal">
   <img fetchpriority="high" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-hero.webp" alt="Downtime: hero image">
 </div>
   <!-- Research: 1-4 horizontal scroll -->
   <div data-label="Research" class="hscroll">
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-1.webp" alt="Downtime: what people do while waiting at the repair shop"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-2.webp" alt="Downtime: emotional vs informational user needs"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-3.webp" alt="Downtime: how different personas experience the same downtime"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-4.webp" alt="Downtime: real users, real frustrations"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-6.webp" alt="Downtime: userflow for clear and enjoyable Apple support"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-1.webp" alt="Downtime: what people do while waiting at the repair shop"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-2.webp" alt="Downtime: emotional vs informational user needs"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-3.webp" alt="Downtime: how different personas experience the same downtime"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-4.webp" alt="Downtime: real users, real frustrations"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-6.webp" alt="Downtime: userflow for clear and enjoyable Apple support"></div>
   </div>
 
   <!-- Project Goal -->
   <h2 class="visually-hidden">Project Goal</h2>
-  <div data-label="Strategy" class="gallery-img detail-single"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-5.webp" alt="Downtime: reimagining Apple Support"></div>
+  <div data-label="Strategy" class="gallery-img reveal detail-single"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-5.webp" alt="Downtime: reimagining Apple Support"></div>
 
   <!-- User test detail -->
   <h2 class="visually-hidden">User test detail</h2>
   <div data-label="Testing" class="hscroll">
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-7.webp" alt="Downtime: validating onboarding and mood features through user testing"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-8.webp" alt="Downtime: guided structure user test detail"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-7.webp" alt="Downtime: validating onboarding and mood features through user testing"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-8.webp" alt="Downtime: guided structure user test detail"></div>
   </div>
 
   <!-- UI Design: single -->
   <!-- Design system -->
   <h2 class="visually-hidden">Design system</h2>
-  <div data-label="Solution" class="gallery-img detail-single"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-9.webp" alt="Downtime: UI design"></div>
+  <div data-label="Solution" class="gallery-img reveal detail-single"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-9.webp" alt="Downtime: UI design"></div>
 
   <!-- Main Function -->
   <h2 class="visually-hidden">Main Function</h2>
   <div class="hscroll">
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-10.webp" alt="Downtime: say goodbye to inaccurate and hopeless waiting"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-11.webp" alt="Downtime: refresh your emotion with mood cards"></div>
-    <div class="hscroll-item"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-12.webp" alt="Downtime: check QR code for personalized contents"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-10.webp" alt="Downtime: say goodbye to inaccurate and hopeless waiting"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-11.webp" alt="Downtime: refresh your emotion with mood cards"></div>
+    <div class="hscroll-item reveal"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-12.webp" alt="Downtime: check QR code for personalized contents"></div>
   </div>
-  <div data-label="Outcome" class="gallery-img detail-single" style="margin-top: 40px;"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-13.webp" alt="Downtime: project retrospect"></div>
+  <div data-label="Outcome" class="gallery-img reveal detail-single" style="margin-top: 40px;"><img loading="lazy" decoding="async" width="1922" height="1080" src="assets/downtime/downtime-13.webp" alt="Downtime: project retrospect"></div>
   </div>
 </div>
 </div>
@@ -182,6 +183,6 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=20261020"></script>
+<script src="js/site.js?v=20261020f"></script>
 </body>
 </html>

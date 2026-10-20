@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/rethink-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261020">
+<link rel="stylesheet" href="css/site.css?v=20261020f">
 <style>
   /* Headings match "Selected Projects" on the homepage */
   .section-label { font-size: 28px; font-weight: 700; margin: 80px 0 24px; }
@@ -62,19 +62,14 @@
   }
   .graphic-gallery img.loaded {
     background: none;
-    animation: galleryFadeIn 0.45s ease;
+    animation: none; /* stop the skeleton; the scroll reveal handles the fade */
   }
   @keyframes gallerySkeleton {
     from { background-position: 170% 0; }
     to   { background-position: -70% 0; }
   }
-  @keyframes galleryFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .graphic-gallery img,
-    .graphic-gallery img.loaded { animation: none; }
+    .graphic-gallery img { animation: none; }
   }
   .bottom-sheet { background: #111; color: #fff; margin-top: 96px; }
   @media (max-width: 640px) {
@@ -118,7 +113,7 @@
 
   <section class="timeline" aria-label="Year by year">
     <div class="cd-list">
-      <details open>
+      <details open class="reveal">
         <summary><span class="cd-n">2026</span><span class="cd-t">Casas Collective, Hackathon</span><span class="cd-pl" aria-hidden="true">+</span></summary>
         <div class="yr-items">
           <a class="yr-item" href="casas-collective.html">
@@ -131,7 +126,7 @@
           </div>
         </div>
       </details>
-      <details>
+      <details class="reveal">
         <summary><span class="cd-n">2025</span><span class="cd-t">KIDP Global Internship</span><span class="cd-pl" aria-hidden="true">+</span></summary>
         <div class="yr-items">
           <a class="yr-item" href="hobbi.html">
@@ -140,7 +135,7 @@
           </a>
         </div>
       </details>
-      <details>
+      <details class="reveal">
         <summary><span class="cd-n">2021</span><span class="cd-t">Illustration exhibition</span><span class="cd-pl" aria-hidden="true">+</span></summary>
         <ul>
           <li><b>Illustration Exhibition</b> · Supported by Jungnang District, Seoul</li>
@@ -150,23 +145,23 @@
   </section>
 
   <section id="gallery">
-    <h2 class="section-label">Graphic Work</h2>
+    <h2 class="section-label reveal">Graphic Work</h2>
     <div class="graphic-gallery" aria-label="Graphic work">
-      <img loading="lazy" decoding="async" width="1000" height="1415" src="assets/graphic/graphic-1.webp" alt="Graphic work 1">
-      <img loading="lazy" decoding="async" width="1000" height="1540" src="assets/graphic/graphic-2.webp" alt="Graphic work 2">
-      <img loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-3.webp" alt="Graphic work 3">
-      <img loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-4.webp" alt="Graphic work 4">
-      <img loading="lazy" decoding="async" width="621" height="878" src="assets/graphic/graphic-5.webp" alt="Graphic work 5">
-      <img loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-6.webp" alt="Graphic work 6">
-      <img loading="lazy" decoding="async" width="1000" height="1143" src="assets/graphic/graphic-7.webp" alt="Graphic work 7">
-      <img loading="lazy" decoding="async" width="525" height="525" src="assets/graphic/graphic-8.webp" alt="Graphic work 8">
-      <img loading="lazy" decoding="async" width="525" height="525" src="assets/graphic/graphic-9.webp" alt="Graphic work 9">
-      <img loading="lazy" decoding="async" width="834" height="1194" src="assets/graphic/graphic-10.webp" alt="Graphic work 10">
-      <img loading="lazy" decoding="async" width="1000" height="1328" src="assets/graphic/graphic-11.webp" alt="Graphic work 11">
-      <img loading="lazy" decoding="async" width="1000" height="1327" src="assets/graphic/graphic-12.webp" alt="Graphic work 12">
-      <img loading="lazy" decoding="async" width="1000" height="1416" src="assets/graphic/graphic-13.webp" alt="Graphic work 13">
-      <img loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-14.webp" alt="Graphic work 14">
-      <img loading="lazy" decoding="async" width="1000" height="1414" src="assets/graphic/graphic-15.webp" alt="Graphic work 15">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1415" src="assets/graphic/graphic-1.webp" alt="Graphic work 1">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1540" src="assets/graphic/graphic-2.webp" alt="Graphic work 2">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-3.webp" alt="Graphic work 3">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-4.webp" alt="Graphic work 4">
+      <img class="reveal" loading="lazy" decoding="async" width="621" height="878" src="assets/graphic/graphic-5.webp" alt="Graphic work 5">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-6.webp" alt="Graphic work 6">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1143" src="assets/graphic/graphic-7.webp" alt="Graphic work 7">
+      <img class="reveal" loading="lazy" decoding="async" width="525" height="525" src="assets/graphic/graphic-8.webp" alt="Graphic work 8">
+      <img class="reveal" loading="lazy" decoding="async" width="525" height="525" src="assets/graphic/graphic-9.webp" alt="Graphic work 9">
+      <img class="reveal" loading="lazy" decoding="async" width="834" height="1194" src="assets/graphic/graphic-10.webp" alt="Graphic work 10">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1328" src="assets/graphic/graphic-11.webp" alt="Graphic work 11">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1327" src="assets/graphic/graphic-12.webp" alt="Graphic work 12">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1416" src="assets/graphic/graphic-13.webp" alt="Graphic work 13">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1000" src="assets/graphic/graphic-14.webp" alt="Graphic work 14">
+      <img class="reveal" loading="lazy" decoding="async" width="1000" height="1414" src="assets/graphic/graphic-15.webp" alt="Graphic work 15">
     </div>
   </section>
 
@@ -190,6 +185,6 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=20261020"></script>
+<script src="js/site.js?v=20261020f"></script>
 </body>
 </html>
